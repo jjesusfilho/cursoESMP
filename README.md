@@ -62,7 +62,7 @@ O cronograma das aulas segue abaixo:
 
 ## Slides
 
-| aula | slide                                                                                                  |
+| Aula | Slide                                                                                                  |
 |:-----|:-------------------------------------------------------------------------------------------------------|
 | 01   | [Introdução à jurimetria](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/slides/a01.pdf) |
 
