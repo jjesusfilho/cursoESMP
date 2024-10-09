@@ -1,0 +1,163 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%",
+  message = FALSE,
+  echo = FALSE
+)
+```
+
+# cursoESMP
+
+Esta é a página do curso de Curso de Extensão em Jurimetria da Escola Superior do Ministério Público (ESMP). Todos materiais do curso estarão disponíveis aqui, o que inclui os slides, os materiais extras mencionados em aula (como referências e sugestões de leitura), bem como os dados que serão utilizados em sala de aula. 
+
+## Instalação
+
+Para instalar este pacote no seu R, siga as instruções abaixo. 
+
+```{r}
+#| echo: true
+#| eval: false
+
+install.packages("devtools") # baixar o pacote devtools
+devtools::install_github("jjesusfilho/cursoESMP") # baixar o pacote deste curso
+```
+
+## Informações básicas 
+
+Os professores do curso são:
+
+```{r}
+tibble::tibble(
+  `Professor` = c(
+    "Alexandre Chibebe Nicolella",
+    "José de Jesus Filho",
+    "Ricardo Feliz Okamoto"
+  ),
+  `Email` = c(
+    "nicolella@usp.br",
+    "jose.filho@mpsp.mp.br; jjfilho@pucsp.br",
+    "ric.feliz@gmail.com"
+  )
+) |>
+  knitr::kable()
+```
+
+O cronograma das aulas segue abaixo: 
+
+#### Módulo I (2024)
+```{r}
+aulas_2024 <- tibble::tibble(
+  aula = 1:9,
+  dt = c(
+    seq.Date(lubridate::dmy("08/10/2024"), lubridate::dmy("03/12/2024"), by = "week")
+  ) |> format("%d/%m/%Y"),
+  conteudo = c(
+    "Introdução à jurimetria",
+    "Desenho de pesquisa",
+    "Análise de viabilidade e Listagem de processos",
+    "Estruturação de dados I (base R e dplyr)",
+    "Estruturação de dados II (lubridate e stringr)",
+    "Estruturação de dados III (iteração com purrr)",
+    "Estruturação de dados IV (LLMs e prompt engineering)",
+    "Visualização de dados I (estatística básica e ggplot2)",
+    "Visualização de dados II (estatística básica e ggplot2)"
+  ),
+  professor = c("R", "A", "J", "R", "R", "J", "J", "A", "A") 
+) |> 
+  dplyr::mutate(
+    professor = dplyr::case_when(
+      professor == "A" ~ "Alexandre Chibebe Nicolella",
+    professor == "J" ~ "José de Jesus Filho",
+    professor == "R" ~ "Ricardo Feliz Okamoto"
+    )
+  ) 
+
+aulas_2024 |>
+  knitr::kable(
+    col.names = c("Aula", "Data", "Conteúdo", "Professor")
+  )
+  # kableExtra::add_header_above(
+  #   c("Módulo I (2024)" = 4)
+  # )
+```
+
+#### Módulo II (2025)
+```{r}
+aulas_2025 <- tibble::tibble(
+  aula = 10:20,
+  dt = c(
+    seq.Date(lubridate::dmy("18/02/2025"), lubridate::dmy("25/02/2025"), by = "week"),
+    seq.Date(lubridate::dmy("11/03/2025"), lubridate::dmy("06/05/2025"), by = "week")
+  ) |> format("%d/%m/%Y"),
+  conteudo = c(
+    "Introdução à Probabilidade",
+    "Variável Aleatória e Tipos de Variáveis",
+    "Teste de Hipótese - leitura de resultados e interpretação",
+    "Regressão linear - intuição",
+    "Regressão logística",
+    "Análise da taxa de vitória e o Teorema de Priest & Klein",
+    "Análise de sobrevivência",
+    "Changepoint detection / Quebra Estrutural",
+    "Resultados",
+    "Estudos de caso I",
+    "Estudos de caso II"
+  ),
+  professor = c("A", "A", "A", "A", "A", "R", "J", "R", "R", "J", "R") 
+) |> 
+  dplyr::mutate(
+    professor = dplyr::case_when(
+      professor == "A" ~ "Alexandre Chibebe Nicolella",
+    professor == "J" ~ "José de Jesus Filho",
+    professor == "R" ~ "Ricardo Feliz Okamoto"
+    )
+  )
+
+aulas_2025 |>
+  knitr::kable(
+    col.names = c("Aula", "Data", "Conteúdo", "Professor")
+  )
+  # kableExtra::add_header_above(
+  #   c("Módulo II (2025)" = 4)
+  # )
+```
+
+## Slides
+
+```{r}
+aulas_2024 |> 
+  dplyr::bind_rows(aulas_2025) |> 
+  dplyr::filter(
+    lubridate::dmy(dt) < lubridate::today()
+  ) |> 
+  dplyr::transmute(
+    aula = stringr::str_pad(aula, 2, "left", "0"),
+    slide = glue::glue("[{conteudo}](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/slides/a{aula}.pdf)")
+  ) |> 
+  knitr::kable()
+```
+
+## Materiais extras
+
+```{r}
+tibble::tibble(
+  `Título` = c(
+    "Link de download do R e RStudio",
+    "R for Data Science (R4DS)"
+  ),
+  `Link` = c(
+    "https://posit.co/download/rstudio-desktop/",
+    "https://r4ds.hadley.nz/"
+  )
+) |>
+  knitr::kable()
+```
+
