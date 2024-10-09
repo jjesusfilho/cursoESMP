@@ -14,8 +14,8 @@ os dados que serão utilizados em sala de aula.
 Para instalar este pacote no seu R, siga as instruções abaixo.
 
 ``` r
-install.packages("devtools") # baixar o pacote devtools
-devtools::install_github("jjesusfilho/cursoESMP") # baixar o pacote deste curso
+install.packages("remotes") # baixar o pacote devtools
+remotes::install_github("jjesusfilho/cursoESMP") # baixar o pacote deste curso
 ```
 
 ## Informações básicas
@@ -52,7 +52,7 @@ O cronograma das aulas segue abaixo:
 |   11 | 25/02/2025 | Variável Aleatória e Tipos de Variáveis                   | Alexandre Chibebe Nicolella |
 |   12 | 11/03/2025 | Teste de Hipótese - leitura de resultados e interpretação | Alexandre Chibebe Nicolella |
 |   13 | 18/03/2025 | Regressão linear - intuição                               | Alexandre Chibebe Nicolella |
-|   14 | 25/03/2025 | Regressão logística                                       | Alexandre Chibebe Nicolella |
+|   14 | 25/03/2025 | Regressão logística                                       | José de Jesus Filho         |
 |   15 | 01/04/2025 | Análise da taxa de vitória e o Teorema de Priest & Klein  | Ricardo Feliz Okamoto       |
 |   16 | 08/04/2025 | Análise de sobrevivência                                  | José de Jesus Filho         |
 |   17 | 15/04/2025 | Changepoint detection / Quebra Estrutural                 | Ricardo Feliz Okamoto       |
@@ -62,7 +62,7 @@ O cronograma das aulas segue abaixo:
 
 ## Slides
 
-| Aula | Slide                                                                                                  |
+| aula | slide                                                                                                  |
 |:-----|:-------------------------------------------------------------------------------------------------------|
 | 01   | [Introdução à jurimetria](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/slides/a01.pdf) |
 

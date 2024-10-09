@@ -27,8 +27,8 @@ Para instalar este pacote no seu R, siga as instruções abaixo.
 #| echo: true
 #| eval: false
 
-install.packages("devtools") # baixar o pacote devtools
-devtools::install_github("jjesusfilho/cursoESMP") # baixar o pacote deste curso
+install.packages("remotes") # baixar o pacote devtools
+remotes::install_github("jjesusfilho/cursoESMP") # baixar o pacote deste curso
 ```
 
 ## Informações básicas 
@@ -111,7 +111,7 @@ aulas_2025 <- tibble::tibble(
     "Estudos de caso I",
     "Estudos de caso II"
   ),
-  professor = c("A", "A", "A", "A", "A", "R", "J", "R", "R", "J", "R") 
+  professor = c("A", "A", "A", "A", "J", "R", "J", "R", "R", "J", "R") 
 ) |> 
   dplyr::mutate(
     professor = dplyr::case_when(
