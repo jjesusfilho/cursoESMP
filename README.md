@@ -65,7 +65,7 @@ O cronograma das aulas segue abaixo:
 | aula | slide                                                                                                  |
 |:-----|:-------------------------------------------------------------------------------------------------------|
 | 01   | [Introdução à jurimetria](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/slides/a01.pdf) |
-| 02   | [Desenho de Pesquisa](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/slides/Aula1.html) |
+| 02   | [Desenho de Pesquisa](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/slides/DesenhoPesquisa.zip) |
 
 ## Materiais extras
 
