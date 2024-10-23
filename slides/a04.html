@@ -8,7 +8,7 @@
 <link href="a04_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="a04_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="a04_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.57">
+  <meta name="generator" content="quarto-1.3.433">
 
   <meta name="author" content="Ricardo Feliz Okamoto">
   <title>Aula 04 - Introdução ao R</title>
@@ -31,7 +31,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -42,7 +42,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -70,7 +70,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.cf { color: #003b4f; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -84,7 +84,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.kw { color: #003b4f; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -221,8 +221,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -459,58 +458,344 @@ Ricardo Feliz Okamoto
 <li>Files</li>
 </ul>
 </section>
-<section id="para-começar-baixando-pacotes-i" class="slide level2">
-<h2>Para começar: Baixando pacotes <span class="pill-1">I</span></h2>
-<p>Vamos começar com uma tarefa simples:</p>
-<p>Digite o seguinte comando no <code>Console</code></p>
+<section id="chamando-funções-function-calling-i" class="slide level2">
+<h2>Chamando funções ( <em>function calling</em> )<span class="pill-1">I</span></h2>
+<p>Para “chamar” funções, usamos a notação:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">nome_da_funcao</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ul>
+<li>O elemento que merece um destaque especial aqui são os parênteses <code>()</code></li>
+</ul>
 </section>
-<section id="para-começar-baixando-pacotes-ii" class="slide level2">
-<h2>Para começar: Baixando pacotes <span class="pill-1">II</span></h2>
-<p>O que fizemos foi baixar um <em>pacote</em>.</p>
+<section id="chamando-funções-function-calling-ii" class="slide level2">
+<h2>Chamando funções ( <em>function calling</em> )<span class="pill-1">II</span></h2>
+<p>Funções recebem “argumentos”; e cada argumento recebe “valores”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">nome_da_funcao</span>(<span class="at">argumento1 =</span> valor1, <span class="at">argumento2 =</span> valor2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li>Um pacote contém <em>funções</em> e <em>dados</em></li>
-<li>Para usar uma função de um pacote no R…
-<ul>
-<li>primeiro chamamos o pacote simplesmente digitando o seu nome</li>
-<li>e depois indicamos ao R que vamos “puxar” uma função desse pacote com a notação <code>::</code></li>
-<li>em seguida, digitamos a função que desejamos usar, finalizando com <code>()</code></li>
-</ul></li>
+<li>Quem dá o nome dos argumentos é a própria função (você deve obedecer aos nomes que ela te oferece)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>pacote<span class="sc">::</span><span class="fu">funcao</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">nome_da_funcao</span>(<span class="at">argumentoHAHAHA =</span> valor1, <span class="at">argumentoABACAXI =</span> valor2) </span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co"># não funciona</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="para-começar-baixando-pacotes-iii" class="slide level2">
-<h2>Para começar: Baixando pacotes <span class="pill-1">III</span></h2>
+<ul>
+<li>Quem dá o nome dos valores é você mesmo</li>
+</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"jjesusfilho/cursoESMP"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">nome_da_funcao</span>(<span class="at">argumento1 =</span> valorHAHAHHAHA, <span class="at">argumento2 =</span> valorABACAXI) </span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="co"># funciona</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="para-começar-baixando-pacotes-iv" class="slide level2">
-<h2>Para começar: Baixando pacotes <span class="pill-1">IV</span></h2>
-<p><a href="">https://cran.r-project.org/web/packages/available_packages_by_name.html</a></p>
+<section id="vamos-falar-sobre-nomes" class="slide level2">
+<h2>Vamos falar sobre nomes<span class="pill-1">!</span></h2>
+<ul>
+<li>Falar de “nomes” de valores só faz sentido quando criamos objetos.</li>
+<li>Para criar objetos, fazemos uma <strong>atribuição</strong>, representada por <code>&lt;-</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>nomeQueEuCriei <span class="ot">&lt;-</span> <span class="st">"valor"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="pacote-x-função" class="slide level2">
-<h2>Pacote x função</h2>
+<section id="vamos-falar-sobre-nomes-1" class="slide level2">
+<h2>Vamos falar sobre nomes<span class="pill-1">!</span></h2>
+<p>Os nomes devem obedecer a certas regras:</p>
+<ul>
+<li>devem começar com letra minúscula</li>
+<li>podem conter letras maiúsculas e números, desde que não seja a primeira letra</li>
+<li>não podem conter caracteres especiais, exceto <code>_</code> e <code>.</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>Nome <span class="co"># não pode</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>nome <span class="co"># pode</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>nome1234 <span class="co"># pode</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>1234nome <span class="co"># não pode</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>n.o.m.e <span class="co"># pode</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>no_me <span class="co"># pode</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>_nome_ <span class="co"># não pode</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="vamos-falar-sobre-nomes-2" class="slide level2">
+<h2>Vamos falar sobre nomes<span class="pill-1">!</span></h2>
+<p>Existem certas convenções sobre nomes:</p>
+<ul>
+<li>camelCase: As partes do nome são marcadas por letras <strong>maiúsculas</strong></li>
+<li>snake_case: As partes do nome são marcadas por underline <code>_</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>nomeQueEuCriei <span class="co"># camelCase</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>nome_que_eu_criei <span class="co"># snake_case</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A convenção no R é usar o snake_case</p>
+</section>
+<section id="base-r-x-pacotes" class="slide level2">
+<h2>Base R x pacotes</h2>
+<p>Existem “coisas” que já vem no R assim que você instala e “coisas” que outras pessoas criaram com base no que já veio no R.</p>
+<ul>
+<li>As “coisas” que já vem no R, nós chamamos de <code>base R</code></li>
+<li>As “coisas” que foram criadas por outras pessoas, nós chamamos de <strong>pacotes</strong></li>
+</ul>
+</section>
+<section id="baixando-pacotes-i" class="slide level2">
+<h2>Baixando pacotes <span class="pill-1">I</span></h2>
+<p>Para baixar pacotes usamos a seguinte função nativa (do base R):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">install.packages</span>(<span class="st">"nome do pacote"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A lista de todos pacotes possíveis que podem entrar em “nome do pacote” está disponível no CRAN do R:</p>
+<p><a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">https://cran.r-project.org/web/packages/available_packages_by_name.html</a></p>
+</section>
+<section id="baixando-pacotes-ii" class="slide level2">
+<h2>Baixando pacotes <span class="pill-1">II</span></h2>
+<ul>
+<li>Mas podemos baixar pacotes que não estão no CRAN, e que estão apenas em “desenvolvimento” no github.</li>
+<li>Não existe função nativa do R para fazer isso. Então usamos um pacote criado para isso, chamado <code>remotes</code>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"usuario ou organização/nome do pacote"</span>) </span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co"># preste atenção na sintaxe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="baixando-pacotes---exercício-rápido" class="slide level2">
+<h2>Baixando pacotes - <span class="pill-1">Exercício rápido</span></h2>
+<p>Com base no seguinte modelo que vimos, responda:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"usuario ou organização/nome do pacote"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li>Qual é o nome do pacote que está sendo utilizado?</li>
+<li>E qual é o nome da função?</li>
+<li>Essa função recebe algum argumento? Se sim, qual é o seu nome?</li>
+<li>Poderíamos escrever assim? Justifique</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">pacote =</span> <span class="st">"usuario ou organização/nome do pacote"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="baixando-pacotes-iii" class="slide level2">
+<h2>Baixando pacotes <span class="pill-1">III</span></h2>
+<p>O que colocar no <code>repo</code> ?</p>
+<div class="center">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="assets/tidyverse-dplyr.png" style="width:60.0%;height:60.0%"></p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"tidyverse/dplyr"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="baixando-pacotes-iii-1" class="slide level2">
+<h2>Baixando pacotes <span class="pill-1">III</span></h2>
+<p>O que colocar no <code>repo</code> ?</p>
+<div class="center">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="assets/jjesusfilho-cursoESMP.png" style="width:60.0%;height:60.0%"></p>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"jjesusfilho/cursoESMP"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="usando-pacotes-i" class="slide level2">
+<h2>Usando pacotes <span class="pill-1">I</span></h2>
+<p>Um pacote contém <em>funções</em> e <em>dados</em>.</p>
+<ul>
+<li>Para usar uma <strong>função</strong> de um pacote no R, fazemos:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>pacote<span class="sc">::</span><span class="fu">funcao</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Para usar os <strong>dados</strong> de um pacote no R, fazemos:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>pacote<span class="sc">::</span>dado</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="usando-pacotes-ii" class="slide level2">
+<h2>Usando pacotes <span class="pill-1">II</span></h2>
+<p>Ao invés de puxarmos uma única função de um pacote ou uma única base de dados, podemos puxar tudo de uma vez.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">library</span>(pacote)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Repare na diferença de sintaxe</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>) <span class="co"># tem aspas</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">library</span>(remotes) <span class="co"># não tem aspas</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="usando-pacotes-iii" class="slide level2">
+<h2>Usando pacotes <span class="pill-1">III</span></h2>
+<p>Se tiver usado <code>library(pacote)</code> antes, então não precisamos dizer o nome do pacote, seguido de <code>::</code> .</p>
+<ul>
+<li>Para usar uma <strong>função</strong> de um pacote no R no qual já chamamos a <code>library(pacote)</code> fazemos:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">funcao</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Para usar os <strong>dados</strong> de um pacote no R no qual já chamamos a <code>library(pacote)</code> fazemos:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>dado</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="usando-pacotes-v" class="slide level2">
+<h2>Usando pacotes <span class="pill-1">V</span></h2>
+<p>Método 1 - Puxando funções e dados específicos</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>pacote<span class="sc">::</span><span class="fu">funcao</span>()</span>
+<span id="cb20-2"><a href="#cb20-2"></a>pacote<span class="sc">::</span>dado</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Método 2 - Puxando a biblioteca inteira do pacote</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">library</span>(pacote)</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="fu">funcao</span>()</span>
+<span id="cb21-3"><a href="#cb21-3"></a>dado</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="classes-i" class="slide level2">
+<h2>Classes <span class="pill-1">I</span></h2>
+<p>As classes dos objetos importam muito para o R. Vamos ver algumas classes importantes:</p>
+<ul>
+<li><code>numeric</code> : números reais</li>
+<li><code>integer</code> : números inteiros</li>
+<li><code>character</code> : textos, também conhecidos como strings</li>
+<li><code>date</code> : data</li>
+<li><code>logical</code> : variável lógica binária, também conhecida como booleana</li>
+</ul>
+</section>
+<section id="classes-ii" class="slide level2">
+<h2>Classes <span class="pill-1">II</span></h2>
+<p>Existe uma função do <code>base R</code> chamada <code>class()</code>. Ela checa a classe de objetos.</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">class</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">class</span>(<span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:30%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">class</span>(<span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "logical"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">class</span>(<span class="st">"TRUE"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">class</span>(<span class="fu">as.Date</span>(<span class="st">"01/01/2024"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Date"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">class</span>(<span class="st">"01/01/2024"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="algumas-operações-com-o-r-i" class="slide level2">
+<h2>Algumas operações com o R <span class="pill-1">I</span></h2>
+<ul>
+<li>Já vimos o operador <code>&lt;-</code>. Ele servia para “colocar” um valor “dentro” um objeto.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>b <span class="ot">&lt;-</span> <span class="st">"1"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Esse procedimento se chama “atribuição”, ou seja, eu “atribuo” um valor a um objeto.</li>
+</ul>
+</section>
+<section id="algumas-operações-com-o-r-ii" class="slide level2">
+<h2>Algumas operações com o R <span class="pill-1">II</span></h2>
+<ul>
+<li>Outra forma de atribuição é por meio do operador <code>=</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>a <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>b <span class="ot">=</span> <span class="st">"1"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Mas vamos usar apenas o operador <code>&lt;-</code></li>
+</ul>
+</section>
+<section id="algumas-operações-com-o-r-iii" class="slide level2">
+<h2>Algumas operações com o R <span class="pill-1">III</span></h2>
+<ul>
+<li><p>Podemos agora comparar objetos entre si. Todas as comparações resultam em uma avaliação <code>TRUE/FALSE</code>.</p></li>
+<li><p>Algumas comparações possíveis são:</p></li>
+</ul>
+<div class="columns">
+<div class="column">
+<ul>
+<li>a &gt; b</li>
+<li>a &lt; b</li>
+<li>a == b</li>
+</ul>
+</div><div class="column">
+<ul>
+<li>a &gt;= b</li>
+<li>a &lt;= b</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="exercícios" class="slide level2">
+<h2><span class="pill-1">Exercícios</span></h2>
+<ol type="1">
+<li>Veja o seguinte pacote no github: <a href="https://github.com/meirelesff/genderBR">genderBR</a>. Como podemos baixá-lo ?</li>
+<li>A função <code>ceiling()</code> faz parte do <code>base R</code>. Ela recebe o argumento <code>x</code>, que recebe valores do tipo numéricos (seja do tipo <em>numeric</em>, seja do tipo <em>integer</em>). Se o número for quebrado, por exemplo 1,2, ele “arredonda para cima”, transformando em 2.
+<ol type="1">
+<li>Crie um objeto que recebe o valor numérico não inteiro “23,1”. O que acontece?</li>
+</ol></li>
+</ol>
 </section></section>
+<section>
 <section id="pílula-2" class="title-slide slide level1 center">
 <h1>Pílula <span class="pill-2">2</span></h1>
 
 </section>
-
+<section id="classes-iii" class="slide level2">
+<h2>Classes <span class="pill-2">III</span></h2>
+<p>Podemos também “juntar” vários valores em um único objeto de algumas formas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>vetor <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>) <span class="co"># isso é um vetor</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>lista_sem_nome <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="co"># lista não nomeada</span></span>
+<span id="cb36-3"><a href="#cb36-3"></a>  <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), </span>
+<span id="cb36-4"><a href="#cb36-4"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span></span>
+<span id="cb36-5"><a href="#cb36-5"></a>)</span>
+<span id="cb36-6"><a href="#cb36-6"></a>lista_nomeada <span class="ot">&lt;-</span> <span class="fu">list</span>( <span class="co"># lista não nomeada</span></span>
+<span id="cb36-7"><a href="#cb36-7"></a>  <span class="at">letras =</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>), </span>
+<span id="cb36-8"><a href="#cb36-8"></a>  <span class="at">numeros =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span></span>
+<span id="cb36-9"><a href="#cb36-9"></a>)</span>
+<span id="cb36-10"><a href="#cb36-10"></a>dados <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tibble</span>(</span>
+<span id="cb36-11"><a href="#cb36-11"></a>  </span>
+<span id="cb36-12"><a href="#cb36-12"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section>
 <section id="pílula-3" class="title-slide slide level1 center">
 <h1>Pílula <span class="pill-3">3</span></h1>
-<div class="quarto-auto-generated-content">
-<p><img src="assets/logo-mpsp.png" class="slide-logo"></p>
-<div class="footer footer-default">
 
-</div>
+<img src="assets/logo-mpsp.png" class="slide-logo r-stretch"><div class="footer footer-default">
+
 </div>
 </section>
     </div>
@@ -539,6 +824,7 @@ Ricardo Feliz Okamoto
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -724,80 +1010,42 @@ Ricardo Feliz Okamoto
       });
     </script>
     
-
     <script>
-
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
       // slide changes (different for each slide format).
-
       (function () {
-
         // dispatch for htmlwidgets
-
         function fireSlideEnter() {
-
           const event = window.document.createEvent("Event");
-
           event.initEvent("slideenter", true, true);
-
           window.document.dispatchEvent(event);
-
         }
-
-    
 
         function fireSlideChanged(previousSlide, currentSlide) {
-
           fireSlideEnter();
 
-    
-
           // dispatch for shiny
-
           if (window.jQuery) {
-
             if (previousSlide) {
-
               window.jQuery(previousSlide).trigger("hidden");
-
             }
-
             if (currentSlide) {
-
               window.jQuery(currentSlide).trigger("shown");
-
             }
-
           }
-
         }
-
-    
 
         // hookup for slidy
-
         if (window.w3c_slidy) {
-
           window.w3c_slidy.add_observer(function (slide_num) {
-
             // slide_num starts at position 1
-
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
           });
-
         }
 
-    
-
       })();
-
     </script>
-
-    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -831,7 +1079,18 @@ Ricardo Feliz Okamoto
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -863,50 +1122,11 @@ Ricardo Feliz Okamoto
         }, 1000);
         // clear code selection
         e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
       });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
-            }
-          }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -916,17 +1136,8 @@ Ricardo Feliz Okamoto
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -940,11 +1151,7 @@ Ricardo Feliz Okamoto
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
+          return note.innerHTML;
         });
       }
       const findCites = (el) => {

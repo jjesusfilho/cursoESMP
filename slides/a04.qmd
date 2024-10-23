@@ -6,7 +6,9 @@ format:
     theme: [default, assets/custom.scss]
     logo: "assets/logo-mpsp.png"
     center-title-slide: true
-    
+execute:
+  echo: true
+  eval: false
 ---
 
 ## Objetivos da aula
@@ -47,45 +49,323 @@ format:
 - Environment
 - Files
 
-## Para começar: Baixando pacotes [I]{.pill-1}
+## Chamando funções ( _function calling_ )[I]{.pill-1}
 
-Vamos começar com uma tarefa simples:
+Para "chamar" funções, usamos a notação:
 
-Digite o seguinte comando no `Console`
-
-```{r, eval=F, echo=T}
-install.packages("remotes")
+```{r}
+nome_da_funcao()
 ```
 
-## Para começar: Baixando pacotes [II]{.pill-1}
+- O elemento que merece um destaque especial aqui são os parênteses `()`
 
-O que fizemos foi baixar um _pacote_. 
+## Chamando funções ( _function calling_ )[II]{.pill-1}
 
-- Um pacote contém _funções_ e _dados_
-- Para usar uma função de um pacote no R...
-  - primeiro chamamos o pacote simplesmente digitando o seu nome
-  - e depois indicamos ao R que vamos "puxar" uma função desse pacote com a notação `::`
-  - em seguida, digitamos a função que desejamos usar, finalizando com `()`
+Funções recebem "argumentos"; e cada argumento recebe "valores".
+
+```{r}
+nome_da_funcao(argumento1 = valor1, argumento2 = valor2)
+```
+
+- Quem dá o nome dos argumentos é a própria função (você deve obedecer aos nomes que ela te oferece)
+
+```{r}
+nome_da_funcao(argumentoHAHAHA = valor1, argumentoABACAXI = valor2) 
+# não funciona
+```
+
+- Quem dá o nome dos valores é você mesmo
+
+```{r}
+nome_da_funcao(argumento1 = valorHAHAHHAHA, argumento2 = valorABACAXI) 
+# funciona
+```
+
+## Vamos falar sobre nomes[!]{.pill-1}
+
+- Falar de "nomes" de valores só faz sentido quando criamos objetos. 
+- Para criar objetos, fazemos uma **atribuição**, representada por `<-`
+
+```{r}
+nomeQueEuCriei <- "valor"
+```
+
+## Vamos falar sobre nomes[!]{.pill-1}
+
+Os nomes devem obedecer a certas regras:
+
+- devem começar com letra minúscula
+- podem conter letras maiúsculas e números, desde que não seja a primeira letra
+- não podem conter caracteres especiais, exceto `_` e `.`
+
+```{r}
+Nome # não pode
+nome # pode
+nome1234 # pode
+1234nome # não pode
+n.o.m.e # pode
+no_me # pode
+_nome_ # não pode
+```
+
+## Vamos falar sobre nomes[!]{.pill-1}
+
+Existem certas convenções sobre nomes:
+
+- camelCase: As partes do nome são marcadas por letras **maiúsculas**
+- snake_case: As partes do nome são marcadas por underline `_`
+
+```{r}
+nomeQueEuCriei # camelCase
+nome_que_eu_criei # snake_case
+```
+
+A convenção no R é usar o snake_case
+
+## Base R x pacotes
+
+Existem "coisas" que já vem no R assim que você instala e "coisas" que outras pessoas criaram com base no que já veio no R. 
+
+- As "coisas" que já vem no R, nós chamamos de `base R`
+- As "coisas" que foram criadas por outras pessoas, nós chamamos de **pacotes**
+
+## Baixando pacotes [I]{.pill-1}
+
+Para baixar pacotes usamos a seguinte função nativa (do base R): 
+
+```{r}
+install.packages("nome do pacote")
+```
+
+A lista de todos pacotes possíveis que podem entrar em "nome do pacote" está disponível no CRAN do R:
+
+[https://cran.r-project.org/web/packages/available_packages_by_name.html](https://cran.r-project.org/web/packages/available_packages_by_name.html)
+
+## Baixando pacotes [II]{.pill-1}
+
+- Mas podemos baixar pacotes que não estão no CRAN, e que estão apenas em "desenvolvimento" no github. 
+- Não existe função nativa do R para fazer isso. Então usamos um pacote criado para isso, chamado `remotes`.
+
+```{r}
+remotes::install_github(repo = "usuario ou organização/nome do pacote") 
+# preste atenção na sintaxe
+```
+
+## Baixando pacotes - [Exercício rápido]{.pill-1}
+
+Com base no seguinte modelo que vimos, responda: 
+```{r}
+remotes::install_github(repo = "usuario ou organização/nome do pacote") 
+```
+
+1. Qual é o nome do pacote que está sendo utilizado?
+2. E qual é o nome da função?
+3. Essa função recebe algum argumento? Se sim, qual é o seu nome?
+4. Poderíamos escrever assim? Justifique
+
+```{r}
+remotes::install_github(pacote = "usuario ou organização/nome do pacote") 
+```
+
+## Baixando pacotes [III]{.pill-1}
+
+O que colocar no `repo` ?
+
+::: {.center}
+```{r, echo=FALSE, eval=TRUE, out.width="60%", out.height="60%"}
+knitr::include_graphics("assets/tidyverse-dplyr.png")
+```
+:::
+
+```{r}
+remotes::install_github(repo = "tidyverse/dplyr") 
+```
+
+## Baixando pacotes [III]{.pill-1}
+
+O que colocar no `repo` ?
+
+::: {.center}
+```{r, echo=FALSE, eval=TRUE, out.width="60%", out.height="60%"}
+knitr::include_graphics("assets/jjesusfilho-cursoESMP.png")
+```
+:::
+
+```{r}
+remotes::install_github(repo = "jjesusfilho/cursoESMP") 
+```
+
+## Usando pacotes [I]{.pill-1}
+
+Um pacote contém _funções_ e _dados_.
+
+- Para usar uma **função** de um pacote no R, fazemos:
   
-```{r, eval=F, echo=T}
+```{r}
 pacote::funcao()
 ```
 
-## Para começar: Baixando pacotes [III]{.pill-1}
-
-
-```{r, eval=F, echo=T}
-remotes::install_github("jjesusfilho/cursoESMP")
+- Para usar os **dados** de um pacote no R, fazemos:
+  
+```{r}
+pacote::dado
 ```
 
-## Para começar: Baixando pacotes [IV]{.pill-1}
+## Usando pacotes [II]{.pill-1}
 
-[https://cran.r-project.org/web/packages/available_packages_by_name.html]()
+Ao invés de puxarmos uma única função de um pacote ou uma única base de dados, podemos puxar tudo de uma vez. 
 
-## Pacote x função
+```{r}
+library(pacote)
+```
 
-## 
+Repare na diferença de sintaxe
 
+```{r}
+install.packages("remotes") # tem aspas
+library(remotes) # não tem aspas
+```
+
+## Usando pacotes [III]{.pill-1}
+
+Se tiver usado `library(pacote)` antes, então não precisamos dizer o nome do pacote, seguido de `::` .
+
+- Para usar uma **função** de um pacote no R no qual já chamamos a `library(pacote)` fazemos:
+  
+```{r}
+funcao()
+```
+
+- Para usar os **dados** de um pacote no R no qual já chamamos a `library(pacote)` fazemos:
+  
+```{r}
+dado
+```
+
+## Usando pacotes [V]{.pill-1}
+
+Método 1 - Puxando funções e dados específicos
+
+```{r}
+pacote::funcao()
+pacote::dado
+```
+
+Método 2 - Puxando a biblioteca inteira do pacote
+
+```{r}
+library(pacote)
+funcao()
+dado
+```
+
+## Classes [I]{.pill-1}
+
+As classes dos objetos importam muito para o R. Vamos ver algumas classes importantes:
+
+- `numeric` : números reais
+- `integer` : números inteiros
+- `character` : textos, também conhecidos como strings
+- `date` : data
+- `logical` : variável lógica binária, também conhecida como booleana
+
+## Classes [II]{.pill-1}
+
+Existe uma função do `base R` chamada `class()`. Ela checa a classe de objetos.
+
+:::: columns
+
+::: {.column width=30%}
+```{r, eval=TRUE, message=TRUE}
+class(1)
+class("1")
+```
+:::
+
+::: {.column width=30%}
+```{r, eval=TRUE, message=TRUE}
+class(TRUE)
+class("TRUE")
+```
+:::
+
+::: {.column width=40%}
+```{r, eval=TRUE, message=TRUE}
+class(as.Date("01/01/2024"))
+class("01/01/2024")
+```
+:::
+
+::::
+
+## Algumas operações com o R [I]{.pill-1}
+
+- Já vimos o operador `<-`. Ele servia para "colocar" um valor "dentro" um objeto.
+
+```{r, eval=TRUE}
+a <- 1
+b <- "1"
+```
+
+- Esse procedimento se chama "atribuição", ou seja, eu "atribuo" um valor a um objeto.
+
+## Algumas operações com o R [II]{.pill-1}
+
+- Outra forma de atribuição é por meio do operador `=`
+
+```{r}
+a = 1
+b = "1"
+```
+
+- Mas vamos usar apenas o operador `<-`
+
+## Algumas operações com o R [III]{.pill-1}
+
+- Podemos agora comparar objetos entre si. Todas as comparações resultam em uma avaliação `TRUE/FALSE`. 
+
+- Algumas comparações possíveis são:
+
+::::columns
+:::column
+- a > b
+- a < b
+- a == b
+:::
+:::column
+- a >= b
+- a <= b
+:::
+::::
+
+## [Exercícios]{.pill-1}
+
+1. Veja o seguinte pacote no github: [genderBR](https://github.com/meirelesff/genderBR). Como podemos baixá-lo ?
+2. A função `ceiling()` faz parte do `base R`. Ela recebe o argumento `x`, que recebe valores do tipo numéricos (seja do tipo _numeric_, seja do tipo _integer_). Se o número for quebrado, por exemplo 1,2, ele "arredonda para cima", transformando em 2. 
+    1. Crie um objeto que recebe o valor numérico não inteiro 23,1. Por que isso gera erro? 
+    2. Arrume o erro e responda: qual é a classe desse objeto?
+    3. Se você digitar `ceiling(x = seuObjeto)`
+  
+  
 # Pílula [2]{.pill-2}
+
+## Classes [III]{.pill-2}
+
+Podemos também "juntar" vários valores em um único objeto de algumas formas:
+
+```{r, eval = TRUE}
+vetor <- c("a", "b", "c") # isso é um vetor
+lista_sem_nome <- list( # lista não nomeada
+  c("a", "b", "c"), 
+  1:9
+)
+lista_nomeada <- list( # lista não nomeada
+  letras = c("a", "b", "c"), 
+  numeros = 1:9
+)
+dados <- tibble::tibble(
+  
+)
+```
 
 # Pílula [3]{.pill-3}

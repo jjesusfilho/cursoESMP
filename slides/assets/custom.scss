@@ -8,8 +8,6 @@ $bg-color: #ffffff;        // Background color
 $text-color: #010101;     // Main text color
 $red: #c40008;     // Other color
 $light-red: #e04e58;
-$h1-bg-color: $red;  // Background color for H1 slides
-$h1-text-color: #ffffff;      // Font color for H1 slides
 
 // Main text
 $font-family-sans-serif: 'Roboto Condensed', sans-serif !default;
@@ -32,6 +30,7 @@ $link-color: $red !default;
 
 // Code color: ;
 $code-color: $red !default; // Inline code text color
+$code-bg: lighten(#222, 70%);
 $code-block-color: $red !default; // Code block text color
 
 // Text selection
@@ -42,15 +41,6 @@ $selection-color: #fff !default;
 $input-panel-bg: rgba(233, 236, 239, 0.2) !default;
 
 /*-- scss:rules --*/
-
-// H1 Slide Styles
-.reveal section.h1-slide {
-  background-color: #c40008; // Set background color for H1 slides
-  color: #ffffff;           // Set text color for H1 slides
-  justify-content: center;         // Center horizontally
-  align-items: center;             // Center vertically
-  text-align: center;              // Center text
-}
 
 // General text styles
 .reveal p {
@@ -110,5 +100,9 @@ section.has-light-background {
 // Custom color for specific headers
 .pill-3 {
   color: #FF7F00; // Set the text color
+}
+
+.center {
+  text-align: center;
 }
 
