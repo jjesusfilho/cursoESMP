@@ -1,0 +1,91 @@
+---
+title: "Aula 04 - Introdução ao R"
+author: "Ricardo Feliz Okamoto"
+format:
+  revealjs: 
+    theme: [default, assets/custom.scss]
+    logo: "assets/logo-mpsp.png"
+    center-title-slide: true
+    
+---
+
+## Objetivos da aula
+
+- Compreender o `base R`
+- Introduzir o `tidyverse`
+- Aprender os verbos básicos do `dplyr`
+
+## Como a aula está planejada?
+
+- Serão três "pílulas" de aula
+- Cada pílula terá a seguinte estrutura 
+  - 15min de exposição
+  - 20min de exercícios
+  - 20min de resolução
+  - 5min de intervalo
+
+# Pílula [1]{.pill-1}
+
+## R, RStudio, IDE [?]{.pill-1}
+
+- R é a linguagem de programação.
+- Mas você precisa programar essa linguagem em algum lugar.
+- Para isso, precisamos de um lugar para digitar o código e outro lugar para executar o código
+  - Podemos até **digitar** em R em uma mensagem de WhatsApp, em um bloco de texto, ou em uma pesquisa Google. Entretanto, esses códigos não vão "fazer nada". 
+  - A gente precisa fazer esses códigos serem **executados**
+
+## R, RStudio, IDE [?]{.pill-1}
+
+- Para juntar o lugar em que **digitamos/editamos** com o lugar em que  **executamos**, usamos alguns ambientes de programação integrados, conhecidos como IDE (Integrated Development Environment).
+- A IDE do R mais usada é o RStudio, mas essa não é a única IDE possível!!!!
+  - Outra IDE muito famosa é o VSCode
+
+## Familiarizando-nos com o [RStudio]{.pill-1}
+
+- Source
+- Console
+- Environment
+- Files
+
+## Para começar: Baixando pacotes [I]{.pill-1}
+
+Vamos começar com uma tarefa simples:
+
+Digite o seguinte comando no `Console`
+
+```{r, eval=F, echo=T}
+install.packages("remotes")
+```
+
+## Para começar: Baixando pacotes [II]{.pill-1}
+
+O que fizemos foi baixar um _pacote_. 
+
+- Um pacote contém _funções_ e _dados_
+- Para usar uma função de um pacote no R...
+  - primeiro chamamos o pacote simplesmente digitando o seu nome
+  - e depois indicamos ao R que vamos "puxar" uma função desse pacote com a notação `::`
+  - em seguida, digitamos a função que desejamos usar, finalizando com `()`
+  
+```{r, eval=F, echo=T}
+pacote::funcao()
+```
+
+## Para começar: Baixando pacotes [III]{.pill-1}
+
+
+```{r, eval=F, echo=T}
+remotes::install_github("jjesusfilho/cursoESMP")
+```
+
+## Para começar: Baixando pacotes [IV]{.pill-1}
+
+[https://cran.r-project.org/web/packages/available_packages_by_name.html]()
+
+## Pacote x função
+
+## 
+
+# Pílula [2]{.pill-2}
+
+# Pílula [3]{.pill-3}
