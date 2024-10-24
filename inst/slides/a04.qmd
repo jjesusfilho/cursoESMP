@@ -1,0 +1,447 @@
+---
+title: "Aula 04 - Introdução ao R"
+author: "Ricardo Feliz Okamoto"
+format:
+  revealjs: 
+    theme: [default, assets/custom.scss]
+    logo: "assets/logo-mpsp.png"
+    center-title-slide: true
+execute:
+  echo: true
+  eval: false
+---
+
+## Objetivos da aula
+
+- Compreender o `base R`
+- Introduzir o `tidyverse`
+- Aprender os verbos básicos do `dplyr`
+
+## Como a aula está planejada?
+
+- Serão três "pílulas" de aula
+- Cada pílula terá a seguinte estrutura 
+  - 15min de exposição
+  - 20min de exercícios
+  - 20min de resolução
+  - 5min de intervalo
+
+# Pílula [1]{.pill-1}
+
+## [I]{.pill-1} R, RStudio, IDE ?
+
+- R é a linguagem de programação.
+- Mas você precisa programar essa linguagem em algum lugar.
+- Para isso, precisamos de um lugar para digitar o código e outro lugar para executar o código
+  - Podemos até **digitar** em R em uma mensagem de WhatsApp, em um bloco de texto, ou em uma pesquisa Google. Entretanto, esses códigos não vão "fazer nada". 
+  - A gente precisa fazer esses códigos serem **executados**
+
+## [I]{.pill-1} R, RStudio, IDE ?
+
+- Para juntar o lugar em que **digitamos/editamos** com o lugar em que  **executamos**, usamos alguns ambientes de programação integrados, conhecidos como IDE (Integrated Development Environment).
+- A IDE do R mais usada é o RStudio, mas essa não é a única IDE possível
+  - Outra IDE muito famosa é o VSCode
+
+## [I]{.pill-1} Familiarizando-nos com o RStudio
+
+- **Source**
+- **Console**
+- Environment
+- Files
+
+## [I]{.pill-1} Base R x pacotes
+
+Existem "coisas" que já vem no R assim que você instala; e "coisas" que outras pessoas criaram com base no que já veio no R e que você precisa instalar. 
+
+- As "coisas" que já vem no R, nós chamamos de `base R`
+- As "coisas" que foram criadas por outras pessoas, nós chamamos de **pacotes**
+
+
+## [I]{.pill-1} Chamando funções (_function calling_)
+
+Para "chamar" funções, usamos a notação:
+
+```{r}
+nome_da_funcao()
+```
+
+- O elemento que merece um destaque especial aqui são os parênteses `()`
+
+## [I]{.pill-1} Chamando funções (_function calling_)
+
+Funções recebem "argumentos"; e cada argumento recebe "valores".
+
+```{r}
+nome_da_funcao(argumento1 = valor1, argumento2 = valor2)
+```
+
+- Quem dá o nome dos argumentos é a própria função (você deve obedecer aos nomes que ela te oferece)
+
+```{r}
+nome_da_funcao(argumentoHAHAHA = valor1, argumentoABACAXI = valor2) 
+# não funciona
+```
+
+- Quem dá o nome dos valores é você mesmo
+
+```{r}
+nome_da_funcao(argumento1 = valorHAHAHHAHA, argumento2 = valorABACAXI) 
+# funciona
+```
+
+## [I]{.pill-1} Vamos falar sobre nomes
+
+- Falar de "nomes" de valores só faz sentido quando criamos objetos. 
+- Para criar objetos, fazemos uma **atribuição**, representada por `<-`
+
+```{r}
+nomeQueEuCriei <- "valor"
+```
+
+## [I]{.pill-1} Vamos falar sobre nomes
+
+Os nomes devem obedecer a certas regras:
+
+- podem conter letras, números e caracteres especiais (apenas `_` e `.`)
+- não pode se iniciar com números ou caracteres especiais
+- é _case sensitive_ 
+
+```{r}
+nome # pode
+nome1234 # pode
+1234nome # não pode
+n.o.m.e # pode
+no_me # pode
+_nome_ # não pode
+```
+
+## [I]{.pill-1} Vamos falar sobre nomes
+
+Existem certas convenções sobre nomes:
+
+- camelCase: As partes do nome são marcadas por letras **maiúsculas**
+- snake_case: As partes do nome são marcadas por underline `_`
+
+```{r}
+nomeQueEuCriei # camelCase
+nome_que_eu_criei # snake_case
+```
+
+A convenção no R é usar o snake_case
+
+## [I]{.pill-1} Vetores
+
+A unidade básica do R são os vetores. Existem dois tipos (mais um) de vetores:
+
+- Vetores atômicos (_atomic vectors_) : São sequências de valores homogêneos. Os tipos de valores mais comuns são: **logical**, **numeric** (**integer** e **double**) e **character**. 
+- Listas (_lists_) : São sequências heterogêneas de valores.
+- `NULL` : É o não-vetor, ou um vetor de tamanho 0
+
+## [I]{.pill-1} Vetores
+
+::: {.center}
+```{r, echo=FALSE, eval=TRUE, out.width="60%", out.height="60%",fig.cap="Fonte: R4DS"}
+knitr::include_graphics("assets/data-structures-overview.png")
+```
+:::
+
+## [I]{.pill-1} Vetores
+
+- A função `c()` é muito importante para os vetores. Ela serve para combinar valores dentro de si. 
+
+```{r}
+valor <- c(1, 2, 3, 4, 5)
+valor
+#> [1] 1 2 3 4 5
+```
+## [I]{.pill-1} Vetores
+
+Qual dos seguintes vetores são atômicos e quais são listas?
+
+```{r}
+vetor1 <- 1
+vetor2 <- c(1, 2, 3, 4, 5)
+vetor3 <- "abacaxi"
+vetor4 <- c("a", "b", "c", "d")
+```
+
+A) Todos são vetores atômicos
+B) Os vetores 1 e 3 são vetores atômicos e os vetores 2 e 4 são listas
+C) Os vetores 1 e 2 são vetores atômicos e os vetores 3 e 4 são listas
+D) Todos são listas
+
+## [I]{.pill-1} Vetores
+
+Qual dos seguintes vetores são atômicos e quais são listas?
+
+```{r}
+vetor1 <- 1
+vetor2 <- c(1, 2, 3, 4, 5)
+vetor3 <- "abacaxi"
+vetor4 <- c("a", "b", "c", "d")
+```
+
+A) **Todos são vetores atômicos**
+B) Os vetores 1 e 3 são vetores atômicos e os vetores 2 e 4 são listas
+C) Os vetores 1 e 2 são vetores atômicos e os vetores 3 e 4 são listas
+D) Todos são listas
+
+## [I]{.pill-1} Vetores
+
+- Existe uma função do `base R` chamada `typeof()`. Ela checa o tipo de vetores.
+
+:::: columns
+::: {.column width=50%}
+```{r, eval=TRUE, message=TRUE}
+typeof(1)
+typeof(1L)
+typeof("1")
+```
+:::
+
+::: {.column width=50%}
+```{r, eval=TRUE, message=TRUE}
+typeof(TRUE)
+typeof("TRUE")
+```
+:::
+::::
+
+## [I]{.pill-1} Atribuição (_assignement_)
+
+- Já vimos o operador `<-`. Ele servia para "colocar" um valor "dentro" um objeto.
+
+```{r, eval=TRUE}
+a <- 1
+b <- "1"
+```
+
+- Esse procedimento se chama "atribuição" (_assignement_), ou seja, eu "atribuo" um valor a um objeto.
+
+## [I]{.pill-1} Atribuição (_assignement_)
+
+- Outra forma de atribuição é por meio do operador `=`
+
+```{r}
+a = 1
+b = "1"
+```
+
+- Mas vamos usar apenas o operador `<-`
+
+## [I]{.pill-1} Comparações
+
+- Podemos agora comparar objetos entre si. Todas as comparações resultam em uma avaliação do tipo `TRUE/FALSE`. 
+
+- Algumas comparações possíveis são:
+
+::::columns
+:::column
+- a > b
+- a < b
+- a == b
+:::
+:::column
+- a >= b
+- a <= b
+:::
+::::
+
+## [I]{.pill-1} Baixando pacotes
+
+Para baixar pacotes usamos a seguinte função nativa (do base R): 
+
+```{r}
+install.packages("nome do pacote")
+```
+
+A lista de todos pacotes possíveis que podem entrar em "nome do pacote" está disponível no CRAN (Comprehensive R Archive Network):
+
+[https://cran.r-project.org/web/packages/available_packages_by_name.html](https://cran.r-project.org/web/packages/available_packages_by_name.html)
+
+## [I]{.pill-1} Baixando pacotes
+
+- Mas podemos baixar pacotes que não estão no CRAN, e que estão apenas em "desenvolvimento" no github, ou mesmo baixar a versão de "desenvolvimento" dos pacotes que estão no CRAN.
+- Não existe função nativa do R para fazer isso. Então usamos um pacote criado para isso, chamado `remotes`.
+
+```{r}
+remotes::install_github(repo = "usuario ou organização/nome do pacote") 
+# preste atenção na sintaxe
+```
+
+## [I]{.pill-1} Baixando pacotes
+
+O que colocar no argumento `repo` ?
+
+::: {.center}
+```{r, echo=FALSE, eval=TRUE, out.width="60%", out.height="60%"}
+knitr::include_graphics("assets/tidyverse-dplyr.png")
+```
+:::
+
+```{r}
+remotes::install_github(repo = "tidyverse/dplyr") 
+```
+
+## [I]{.pill-1} Baixando pacotes
+
+O que colocar no argumento `repo` ?
+
+::: {.center}
+```{r, echo=FALSE, eval=TRUE, out.width="60%", out.height="60%"}
+knitr::include_graphics("assets/jjesusfilho-cursoESMP.png")
+```
+:::
+
+```{r}
+remotes::install_github(repo = "jjesusfilho/cursoESMP") 
+```
+
+## [I]{.pill-1} Usando pacotes
+
+Um pacote contém _funções_ e _dados_.
+
+- Para usar uma **função** de um pacote no R, fazemos:
+  
+```{r}
+pacote::funcao()
+```
+
+- Para usar os **dados** de um pacote no R, fazemos:
+  
+```{r}
+pacote::dado
+```
+
+## [I]{.pill-1} Usando pacotes
+
+Ao invés de puxarmos uma única função de um pacote ou uma única base de dados, podemos puxar tudo de uma vez. 
+
+```{r}
+library(pacote)
+```
+
+Repare na diferença de sintaxe
+
+```{r}
+install.packages("remotes") # tem aspas
+library(remotes) # não tem aspas
+```
+
+## [I]{.pill-1} Usando pacotes
+
+- Se tiver usado `library(pacote)` antes, então não precisamos dizer o nome do pacote, seguido de `::` .
+- Neste caso, para usar uma **função**, fazemos:
+  
+```{r}
+funcao()
+```
+
+- Neste caso, para usar **dados**, fazemos:
+  
+```{r}
+dado
+```
+
+## [I]{.pill-1} Usando pacotes
+
+:::: columns
+::: column
+Método 1 - Puxando funções e dados específicos
+
+```{r}
+pacote::funcao()
+pacote::dado
+```
+:::
+::: column
+Método 2 - Puxando a biblioteca inteira do pacote
+
+```{r}
+library(pacote)
+funcao()
+dado
+```
+:::
+::::
+
+
+## Baixando pacotes - [Exercício rápido]{.pill-1}
+
+Com base no seguinte modelo que vimos, responda: 
+```{r}
+remotes::install_github(repo = "usuario ou organização/nome do pacote") 
+```
+
+1. Qual é o nome do pacote que está sendo utilizado?
+2. E qual é o nome da função?
+3. Essa função recebe algum argumento? Se sim, qual é o seu nome?
+4. Poderíamos escrever assim? Justifique
+
+```{r}
+remotes::install_github(pacote = "usuario ou organização/nome do pacote") 
+```
+
+
+## [Exercícios]{.pill-1}
+
+
+# Pílula [2]{.pill-2}
+
+## [I]{.pill-2} Listas e bases de dados
+
+Vamos começar baixando o pacote do nosso curso:
+
+```{r}
+remotes::install_github("jjesusfilho/cursoESMP") 
+```
+
+Esse pacote contém bases de dados!!!
+
+```{r}
+cursoESMP::
+```
+
+## aaaaaaaa
+```{r, }
+va <- c("a", "b", "c")
+lista <- list("a", "b", "c")
+
+va
+#> [1] "a" "b" "c"
+
+lista
+#> [[1]]
+#> [1] "a"
+#> 
+#> [[2]]
+#> [1] "b"
+#> 
+#> [[3]]
+#> [1] "c"
+```
+
+## [I]{.pill-2} Subsetting 
+
+```{r}
+va <- c("a", "b", "c") 
+lista <- list("a", "b", "c")
+
+va[1]
+#> [1] "a"
+
+lista[1]
+#> [[1]]
+#> [1] "a"
+
+lista[[1]]
+#> [1] "a"
+```
+
+# Pílula [3]{.pill-3}
+
+
+
+
+
+

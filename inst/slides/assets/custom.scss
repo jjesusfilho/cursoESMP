@@ -1,0 +1,108 @@
+/*-- scss:defaults --*/
+
+// Include theme-specific fonts (you can replace this with your preferred font)
+@import url(https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap);
+
+// Colors used in the theme
+$bg-color: #ffffff;        // Background color
+$text-color: #010101;     // Main text color
+$red: #c40008;     // Other color
+$light-red: #e04e58;
+
+// Main text
+$font-family-sans-serif: 'Roboto Condensed', sans-serif !default;
+$body-color: $text-color !default;
+
+$body-bg: $bg-color !default;
+
+$underline-color: $red; // Underline color
+
+// Headings
+$presentation-heading-font: 'Roboto Condensed', sans-serif !default;
+$presentation-heading-font-weight: 700 !default; // Bold
+$presentation-h1-font-size: 2em !default;
+
+// Heading text shadow
+$presentation-h1-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1) !default;
+
+// Links
+$link-color: $red !default;
+
+// Code color: ;
+$code-color: $red !default; // Inline code text color
+$code-bg: lighten(#222, 70%);
+$code-block-color: $red !default; // Code block text color
+
+// Text selection
+$selection-bg: $light-red !default;
+$selection-color: #fff !default;
+
+// Input panel (example style)
+$input-panel-bg: rgba(233, 236, 239, 0.2) !default;
+
+/*-- scss:rules --*/
+
+// General text styles
+.reveal p {
+  font-weight: 400;
+  color: $body-color; // Set main text color
+}
+
+section.has-light-background {
+  p,
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: $text-color; // Use main text color for headers
+    text-shadow: none;
+  }
+}
+
+.reveal h1 {
+  text-shadow: $presentation-h1-text-shadow;
+}
+
+.reveal a {
+  color: $link-color; // Use other color for links
+  text-decoration: none; // Remove underline
+
+  &:hover {
+    text-decoration: underline; // Add underline on hover
+  }
+}
+
+.reveal p code {
+  background-color: $bg-color; // Set background color for code snippets
+  display: inline-block;
+  border-radius: 7px;
+  color: $text-color; // Text color for code
+}
+
+.reveal small code {
+  vertical-align: baseline;
+}
+
+// Custom color for specific headers
+.pill {
+  color: $red; // Set the text color
+}
+
+.pill-1 {
+  color: $red; // Set the text color
+}
+
+// Custom color for specific headers
+.pill-2 {
+  color: #4f5ab2; // Set the text color
+}
+
+// Custom color for specific headers
+.pill-3 {
+  color: #FF7F00; // Set the text color
+}
+
+.center {
+  text-align: center;
+}
+

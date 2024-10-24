@@ -140,7 +140,7 @@ aulas_2024 |>
   ) |> 
   dplyr::transmute(
     aula = stringr::str_pad(aula, 2, "left", "0"),
-    slide = glue::glue("[{conteudo}](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/slides/a{aula}.pdf)")
+    slide = glue::glue("[{conteudo}](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a{aula}.pdf)")
   ) |> 
   knitr::kable()
 ```
