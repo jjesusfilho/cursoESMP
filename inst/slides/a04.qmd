@@ -20,7 +20,7 @@ execute:
 ## Como a aula está planejada?
 
 - Serão três "pílulas" de aula
-- Cada pílula terá a seguinte estrutura 
+- Cada pílula terá a seguinte estrutura (flexível)
   - 15min de exposição
   - 20min de exercícios
   - 20min de resolução
@@ -388,59 +388,569 @@ remotes::install_github(pacote = "usuario ou organização/nome do pacote")
 
 # Pílula [2]{.pill-2}
 
-## [I]{.pill-2} Listas e bases de dados
+## [I]{.pill-2} Tidyverse
 
-Vamos começar baixando o pacote do nosso curso:
+- Tidyverse é um conjunto de pacotes criados pelo Hadley Wickham
+- O tidyverse introduziu uma nova forma de programar em R, de forma que é totalmente diferente programar usando as funções do `baseR` e as funções do `tidyverse`
+- Neste curso, iremos aprender a programar com o `tidyverse` e não com o `baseR`. Hoje, iremos ver o primeiro pacote : `dplyr`
+
+## [I]{.pill-2} Filter
+
+- Existe uma função nativa chamada `filter()`, mas vamos usar a função `dplyr::filter()` apenas. Elas possuem sintaxes diferentes. 
+- O `dplyr::filter()` funciona para "filtrar" linhas de uma base, mantendo apenas aquelas que satisfizerem determinadas condições.
+- Ele não exclui nenhuma coluna
+
+## [I]{.pill-2} Filter
+
+```{r, eval=T, message=T}
+letters
+```
+
+::: {.fragment}
+- Isso é **base R** (nativo) ou vem de um **pacote**?
+:::
+::: {.fragment}
+- Isso é uma **função nativa** ou são **dados nativos**?
+:::
+::: {.fragment}
+- Esses dados são um **vetor atômico** ou uma **lista**?
+:::
+::: {.fragment}
+- Qual é o tipo esperado desse vetor atômico? `character`, `double`, `numeric` ou `logical`?
+:::
+::: {.fragment}
+```{r, eval=T, message=T}
+typeof(letters)
+```
+:::
+
+
+## [I]{.pill-2} Filter
+
+```{r, eval=T, message=T}
+base <- tibble::tibble(
+  id = letters[1:10],
+  valor = 1:10
+)
+
+base
+```
+
+## [I]{.pill-2} Filter
 
 ```{r}
-remotes::install_github("jjesusfilho/cursoESMP") 
+base <- tibble::tibble(
+  id = letters[1:10],
+  valor = 1:10
+)
+
+dplyr::filter(base, valor < 2)
 ```
 
-Esse pacote contém bases de dados!!!
+- Quais linhas vocês esperam que sejam retornadas? Digitem no chat o `id` das linhas, isto é, as letras correspondentes a cada linha. 
+
+::: {.fragment}
+```{r, eval=T, message=T}
+dplyr::filter(base, valor < 2)
+```
+:::
+
+## [I]{.pill-2} Filter
 
 ```{r}
-cursoESMP::
+base <- tibble::tibble(
+  id = letters[1:10],
+  valor = 1:10
+)
+
+dplyr::filter(base, valor <= 5)
 ```
 
-## aaaaaaaa
-```{r, }
-va <- c("a", "b", "c")
-lista <- list("a", "b", "c")
+- Quais linhas vocês esperam que sejam retornadas? Digitem no chat o `id` das linhas, isto é, as letras correspondentes a cada linha. 
 
-va
-#> [1] "a" "b" "c"
-
-lista
-#> [[1]]
-#> [1] "a"
-#> 
-#> [[2]]
-#> [1] "b"
-#> 
-#> [[3]]
-#> [1] "c"
+::: {.fragment}
+```{r, eval=T, message=T}
+dplyr::filter(base, valor <= 5)
 ```
+:::
 
-## [I]{.pill-2} Subsetting 
+## [I]{.pill-2} Filter
 
 ```{r}
-va <- c("a", "b", "c") 
-lista <- list("a", "b", "c")
+base <- tibble::tibble(
+  id = letters[1:10],
+  valor = 1:10
+)
 
-va[1]
-#> [1] "a"
-
-lista[1]
-#> [[1]]
-#> [1] "a"
-
-lista[[1]]
-#> [1] "a"
+dplyr::filter(base, valor == 2)
 ```
+
+- Quais linhas vocês esperam que sejam retornadas? Digitem no chat o `id` das linhas, isto é, as letras correspondentes a cada linha. 
+
+::: {.fragment}
+```{r, eval=T, message=T}
+dplyr::filter(base, valor == 2)
+```
+:::
+
+## [I]{.pill-2} Filter
+
+```{r}
+base <- tibble::tibble(
+  id = letters[1:10],
+  valor = 1:10
+)
+
+dplyr::filter(base, valor == c(2, 3, 4))
+```
+
+- Quais linhas vocês esperam que sejam retornadas? Digitem no chat o `id` das linhas, isto é, as letras correspondentes a cada linha. 
+
+::: {.fragment}
+```{r, eval=T, message=T}
+dplyr::filter(base, valor == c(2, 3, 4))
+```
+:::
+
+## [I]{.pill-2} Filter
+
+```{r}
+base <- tibble::tibble(
+  id = letters[1:10],
+  valor = 1:10
+)
+
+dplyr::filter(base, valor %in% c(2, 3, 4))
+```
+
+- Quais linhas vocês esperam que sejam retornadas? Digitem no chat o `id` das linhas, isto é, as letras correspondentes a cada linha. 
+
+
+::: {.fragment}
+```{r, eval=T, message=T}
+dplyr::filter(base, valor %in% c(2, 3, 4))
+```
+:::
+
+## [I]{.pill-2} Filter
+
+```{r}
+base <- tibble::tibble(
+  id = letters[1:10],
+  valor = 1:10
+)
+
+dplyr::filter(base, valor %% 2 == 2)
+```
+
+- Quais linhas vocês esperam que sejam retornadas? Digitem no chat o `id` das linhas, isto é, as letras correspondentes a cada linha. 
+
+
+::: {.fragment}
+```{r, eval=T, message=T}
+dplyr::filter(base, valor %% 2 == 2)
+```
+:::
+
+## [I]{.pill-2} Filter
+
+- O `dplyr::filter()` funciona com a seguinte sintaxe:
+
+```{r}
+dplyr::filter(dados, <relação lógica 1>, <relação lógica 2>, ...)
+```
+
+- Isso significa que primeiro ele recebe a base de dados e depois a gente vai criar relações lógicas para manter ou excluir certas colunas. 
+
+## [I]{.pill-2} Filter
+
+- Como funciona o `dplyr::filter()` por trás?
+
+```{r}
+base <- tibble::tibble(
+  id = letters[1:10], # letters
+  valor = 1:10
+)
+
+base$valor
+#> [1]  1  2  3  4  5  6  7  8  9 10
+base$valor == 2 
+#> [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+
+dplyr::filter(base, valor == 2)
+#> # A tibble: 1 × 2
+#>   id    valor
+#>   <chr> <int>
+#> 1 b         2
+```
+
+## [I]{.pill-2} Select
+
+- O `dplyr::select()` mantém todas as linhas, mas exclui as colunas que você não **selecionar**. 
+
+```{r, eval=T, message=T}
+da <- tibble::tibble(
+  letras = letters[1:5], # letters
+  numeros = 1:5,
+  blabla = letters[1:5],
+  excluir = blabla
+)
+
+dplyr::select(da, letras, numeros)
+```
+
+## [I]{.pill-2} Select
+
+- Eu posso renomear a coluna enquanto seleciono
+
+```{r, eval=T, message=T}
+da <- tibble::tibble(
+  letras = letters[1:5], # letters
+  numeros = 1:5,
+  blabla = letters[1:5],
+  excluir = blabla
+)
+
+dplyr::select(da, id = letras, valor = numeros)
+```
+
+
+## [I]{.pill-2} Select
+
+- Eu posso também indicar quais colunas eu NÃO quero manter
+
+```{r, eval=T, message=T}
+da <- tibble::tibble(
+  letras = letters[1:5], # letters
+  numeros = 1:5,
+  blabla = letters[1:5],
+  excluir = blabla
+)
+
+dplyr::select(da, -blabla, -excluir)
+```
+
+## [I]{.pill-2} Select
+
+- Eu também posso indicar as colunas a manter pelo seu número
+
+```{r, eval=T, message=T}
+da <- tibble::tibble(
+  letras = letters[1:5], # letters
+  numeros = 1:5,
+  blabla = letters[1:5],
+  excluir = blabla
+)
+
+dplyr::select(da, 1:2)
+```
+
+## [I]{.pill-2} Mutate
+
+- O `dplyr::mutate()` é uma das funções mais importantes. Ele nos permite modificar colunas já existentes ou adicionar/criar colunas novas na base.
+
+```{r, eval=T, message=T}
+base <- tibble::tibble(
+  id = letters[1:5],
+  valor = 1:5
+)
+
+dplyr::mutate(base, valor_duplicado=valor*2)
+```
+
+## [I]{.pill-2} Pipe
+
+- O pipe é uma forma de concatenar vários inputs/outpus em uma sequência única
+- Esse sequência, nós chamamos de **pipeline** (literalmente, "linha do pipe")
+
+## [I]{.pill-2} Pipe
+
+```{r}
+da1 <- tibble::tibble(
+  letras = letters[1:10],
+  numeros = 1:10,
+  logicos = c(T, F, T, T, F, F, T, F, T, T)
+)
+
+# sem pipe
+da2 <- dplyr::mutate(da1, duplicados = numeros * 2)
+da3 <- dplyr::mutate(da2, frases = paste0("Letra terminada em: ", letras))
+da_final <- dplyr::select(da3,letras, frases, numeros, duplicados, logicos)
+
+# com pipe
+da1 |> 
+  dplyr::mutate(
+    duplicados = numeros *2
+  ) |> 
+  dplyr::mutate(
+    frases = paste0("Letra terminada em: ", letras)
+  ) |> 
+  dplyr::select(letras, frases, numeros, duplicados, logicos)
+```
+
+## [I]{.pill-2} Pipe
+
+- O pipe, originalmente, não era algo nativo do R (não existia no baseR)
+- Ele foi criado pelo Hadley Wickham, no pacote `magrittr` (outro pacote do conjunto `tidyverse`) e tinha essa cara:
+
+```{r}
+library(magrittr)
+
+da1 %>% 
+  dplyr::mutate(duplicados = numeros *2) 
+```
+
+- Atualmente, o pipe foi integrado no baseR e já vem instalado e tem esta cara:
+
+```{r}
+da1 |> 
+  dplyr::mutate(duplicados = numeros *2) 
+```
+
+## [I]{.pill-2} Pipe
+
+- Para digitar o pipe, basta apertar `crtl` + `shift` + `m` (tudo ao mesmo tempo). Ao pressionar estas teclas aparece, via de regra, o pipe antigo `%>%`
+- Para usar o pipe antigo, vocês precisam SEMPRE carregar a biblioteca do `magrittr`. Este é um caso em que não é possível usar a "função" do pacote pelo método: `magrittr::%>%`. Sempre é necessário carregar a biblioteca antes. 
+- Recomendo fortemente trocar o default `%>%` pelo `|>`. Você faz isso em **Tools > Global Options > Code > Use native pipe operator |> (requires R 4.1+)**
 
 # Pílula [3]{.pill-3}
 
+## [I]{.pill-3} Distinct
 
+- Podemos descobrir todas as categorias existentes de uma determinada coluna com a função `dplyr::distinct()`
+
+```{r, eval=T, message=T}
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c")
+)
+
+da3 |> 
+  dplyr::distinct(a)
+```
+
+## [I]{.pill-3} Distinct
+
+- Essa função pode receber várias colunas. Neste caso, ela vai manter toda a combinatória de casos encontrados
+
+```{r, eval=T, message=T}
+da3 <- tibble::tibble(
+  a = c("a", "a", "h", "a", "a", "b", "d", "c", "c", "c"),
+  b = c("b", "d", "e", "a", "a", "f", "e", "c", "c", "c")
+)
+
+da3 |> 
+  dplyr::distinct(a, b)
+```
+## [I]{.pill-3} Count
+
+- Podemos contar a quantidade de linhas com um mesmo valor em uma determinada coluna com a função `dplyr::count()`
+
+```{r, eval=T, message=T}
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c")
+)
+
+da3 |> 
+  dplyr::count(a)
+```
+
+## [I]{.pill-3} Group by, Summarise e Ungroup
+
+- O `dplyr::summarise()` é uma das funções mais úteis. Ela **resume** várias linhas. 
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::summarise(
+    somatoria = sum(b)
+  ) 
+```
+## [I]{.pill-3} Group by, Summarise e Ungroup
+
+- O `dplyr::summarise()` é **normalmente** é usado junto da função `dplyr::group_by()`
+- E sempre que o `dplyr::group_by()` é usado, precisamos usar o `dplyr::ungroup()` depois. 
+- Ao agrupar os dados por alguma categoria, então o resumo criado pelo `summarise()` fica agrupado. 
+- Vamos ver algumas funções importantes de resumo
+
+## [I]{.pill-3} Group by, Summarise e Ungroup
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::group_by(a) |> 
+  dplyr::summarise(
+    somatoria = sum(b)
+  ) |> 
+  dplyr::ungroup()
+```
+
+## [I]{.pill-3} Group by, Summarise e Ungroup
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::group_by(a) |> 
+  dplyr::summarise(
+    media = mean(b)
+  ) |> 
+  dplyr::ungroup()
+```
+
+## [I]{.pill-3} Group by, Summarise e Ungroup
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::group_by(a) |> 
+  dplyr::summarise(
+    mediana = median(b)
+  ) |> 
+  dplyr::ungroup()
+```
+
+## [I]{.pill-3} Group by, Summarise e Ungroup
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T),
+  c = sample(c(TRUE, FALSE), 10, replace=T)
+)
+
+da3 |> 
+  dplyr::group_by(a) |> 
+  dplyr::summarise(
+    somatoria = all(c)
+  ) |> 
+  dplyr::ungroup()
+```
+
+## [I]{.pill-3} Arrange
+
+- Por fim, podemos ordenar os valores para melhor visualizá-los por meio da função `dplyr::arrange()`
+- Por default, ele ordena na ordem crescente (o menor em cima; e o maior embaixo)
+
+## [I]{.pill-3} Arrange
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::group_by(a) |> 
+  dplyr::summarise(
+    somatoria = sum(b)
+  ) |> 
+  dplyr::ungroup() |> 
+  dplyr::arrange(somatoria)
+```
+
+## [I]{.pill-3} Arrange
+
+- E podemos ordenar os valores na ordem descrescente
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::group_by(a) |> 
+  dplyr::summarise(
+    somatoria = sum(b)
+  ) |> 
+  dplyr::ungroup() |> 
+  dplyr::arrange(desc(somatoria))
+```
+
+## [I]{.pill-3} Arrange
+
+- Se a ordenação for passada para variável numérica, ela irá dispor os dados em ordem de grandeza. Mas se for passada uma variável do tipo `character`, ela vai ordenar de forma alfabética. 
+
+## [I]{.pill-3} Arrange
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = letters[1:10],
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::arrange(a)
+```
+
+
+## [I]{.pill-3} Arrange
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = letters[1:10],
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::arrange(desc(a))
+```
+
+## [I]{.pill-3} Arrange
+
+- Nós podemos passar mais de um critério de ordenação
+- E a ordem em que passamos esses critérios importa!!!
+
+## [I]{.pill-3} Arrange
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::arrange(a, b)
+```
+
+## [I]{.pill-3} Arrange
+
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::arrange(b, a)
+```
 
 
 
