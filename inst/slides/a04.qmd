@@ -40,7 +40,6 @@ execute:
 
 - Para juntar o lugar em que **digitamos/editamos** com o lugar em que  **executamos**, usamos alguns ambientes de programação integrados, conhecidos como IDE (Integrated Development Environment).
 - A IDE do R mais usada é o RStudio, mas essa não é a única IDE possível
-  - Outra IDE muito famosa é o VSCode
 
 ## [I]{.pill-1} Familiarizando-nos com o RStudio
 
@@ -186,6 +185,68 @@ B) Os vetores 1 e 3 são vetores atômicos e os vetores 2 e 4 são listas
 C) Os vetores 1 e 2 são vetores atômicos e os vetores 3 e 4 são listas
 D) Todos são listas
 
+
+## [I]{.pill-1} Vetores
+
+O que vocês acham do seguinte vetor? Ele é um vetor atômico ou uma lista?
+
+```{r}
+vetorX <- c(1.5, "2", 3L, 4, "5")
+```
+A) É um vetor atômico do tipo numeric (seja integer, seja double)
+B) É uma lista com elementos do tipo double, character e integer
+C) É um vetor atômico do tipo character
+
+## [I]{.pill-1} Vetores
+
+O que vocês acham do seguinte vetor? Ele é um vetor atômico ou uma lista?
+
+```{r}
+vetorX <- c(1.5, "2", 3L, 4, "5")
+```
+A) É um vetor atômico do tipo numeric (seja integer, seja double)
+B) É uma lista com elementos do tipo double, character e integer
+C) **É um vetor atômico do tipo character**
+
+## [I]{.pill-1} Vetores
+
+O que vocês acham dos seguintes vetores? São vetores atômicos ou listas?
+
+```{r}
+vetorA <- list(
+  c("a", "b", "c"),
+  c("1", "2", "3", "4")
+)
+vetorB <- list(
+  c("a", "b", "c"),
+  c(1, 2, 3)
+)
+```
+A) Ambos vetores são vetores atômicos.
+B) O vetorA é um vetor atômico e o vetorB é uma lista.
+C) O vetorA é uma lista e o vetorB é um vetor atômico.
+D) Ambos os vetores são listas.
+
+
+## [I]{.pill-1} Vetores
+
+O que vocês acham dos seguintes vetores? São vetores atômicos ou listas?
+
+```{r}
+vetorA <- list(
+  c("a", "b", "c"),
+  c("1", "2", "3", "4")
+)
+vetorB <- list(
+  c("a", "b", "c"),
+  c(1, 2, 3)
+)
+```
+A) Ambos vetores são vetores atômicos.
+B) O vetorA é um vetor atômico e o vetorB é uma lista.
+C) O vetorA é uma lista e o vetorB é um vetor atômico.
+D) **Ambos os vetores são listas.**
+
 ## [I]{.pill-1} Vetores
 
 - Existe uma função do `base R` chamada `typeof()`. Ela checa o tipo de vetores.
@@ -206,6 +267,43 @@ typeof("TRUE")
 ```
 :::
 ::::
+
+
+## [I]{.pill-1} Vetores
+
+:::: columns
+::: {.column width=50%}
+```{r, eval=TRUE, message=TRUE}
+vetor1 <- 1
+typeof(vetor1)
+vetor2 <- c(1, 2, 3, 4, 5)
+typeof(vetor2)
+vetor3 <- "abacaxi"
+typeof(vetor3)
+vetor4 <- c("a", "b", "c", "d")
+typeof(vetor4)
+vetorX <- c(1.5, "2", 3L, 4, "5")
+typeof(vetorX)
+```
+:::
+
+::: {.column width=50%}
+```{r, eval=TRUE, message=TRUE}
+vetorA <- list(
+  c("a", "b", "c"),
+  c("1", "2", "3", "4")
+)
+typeof(vetorA)
+
+vetorB <- list(
+  c("a", "b", "c"),
+  c(1, 2, 3)
+)
+typeof(vetorB)
+```
+:::
+::::
+
 
 ## [I]{.pill-1} Atribuição (_assignement_)
 
@@ -246,6 +344,47 @@ b = "1"
 - a <= b
 :::
 ::::
+
+## [I]{.pill-1} Comparações
+
+- Cuidado com **floating point**
+
+```{r, eval=T, message=T}
+a = 0.38
+b = 0.08
+print(a-b)
+```
+
+- O que vocês esperam que seja o resultado da seguinte expressão? TRUE ou FALSE?
+
+```{r}
+(a-b) == 0.3
+```
+
+
+## [I]{.pill-1} Comparações
+
+- Cuidado com **floating point**
+
+```{r, eval=T, message=T}
+a = 0.38
+b = 0.08
+print(a-b)
+```
+
+- O que vocês esperam que seja o resultado da seguinte expressão? TRUE ou FALSE?
+
+```{r, eval=T, message=T}
+(a-b) == 0.3
+```
+
+## [I]{.pill-1} Comparações
+
+- Cuidado com **floating point**
+
+```{r, echo=F, eval=T, message=T}
+knitr::include_graphics("assets/floating.png")
+```
 
 ## [I]{.pill-1} Baixando pacotes
 
