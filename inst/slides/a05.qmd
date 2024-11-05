@@ -1,0 +1,434 @@
+---
+title: "Aula 05"
+author: "Ricardo Feliz Okamoto"
+format:
+  revealjs: 
+    theme: [default, assets/custom.scss]
+    logo: "assets/logo-mpsp.png"
+    center-title-slide: true
+execute:
+  echo: true
+  eval: false
+---
+
+# Pílula [1]{.pill-1}
+
+## [I]{.pill-1} Count
+
+- Podemos contar a quantidade de linhas com um mesmo valor em uma determinada coluna com a função `dplyr::count()`
+
+```{r, eval=T, message=T}
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c")
+)
+
+da3 |> 
+  dplyr::count(a)
+```
+
+## [I]{.pill-1} Group by, Summarise e Ungroup
+
+- O `dplyr::summarise()` é uma das funções mais úteis. Ela **resume** várias linhas. 
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::summarise(
+    somatoria = sum(b)
+  ) 
+```
+## [I]{.pill-1} Group by, Summarise e Ungroup
+
+- O `dplyr::summarise()` é **normalmente** é usado junto da função `dplyr::group_by()`
+- E sempre que o `dplyr::group_by()` é usado, precisamos usar o `dplyr::ungroup()` depois. 
+- Ao agrupar os dados por alguma categoria, então o resumo criado pelo `summarise()` fica agrupado. 
+- Vamos ver algumas funções importantes de resumo
+
+## [I]{.pill-1} Group by, Summarise e Ungroup
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::group_by(a) |> 
+  dplyr::summarise(
+    somatoria = sum(b)
+  ) |> 
+  dplyr::ungroup()
+```
+
+## [I]{.pill-1} Group by, Summarise e Ungroup
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::group_by(a) |> 
+  dplyr::summarise(
+    media = mean(b)
+  ) |> 
+  dplyr::ungroup()
+```
+
+## [I]{.pill-1} Group by, Summarise e Ungroup
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::group_by(a) |> 
+  dplyr::summarise(
+    mediana = median(b)
+  ) |> 
+  dplyr::ungroup()
+```
+
+## [I]{.pill-1} Group by, Summarise e Ungroup
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T),
+  c = sample(c(TRUE, FALSE), 10, replace=T)
+)
+
+da3 |> 
+  dplyr::group_by(a) |> 
+  dplyr::summarise(
+    somatoria = all(c)
+  ) |> 
+  dplyr::ungroup()
+```
+
+## [I]{.pill-1} Arrange
+
+- Por fim, podemos ordenar os valores para melhor visualizá-los por meio da função `dplyr::arrange()`
+- Por default, ele ordena na ordem crescente (o menor em cima; e o maior embaixo)
+
+## [I]{.pill-1} Arrange
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::group_by(a) |> 
+  dplyr::summarise(
+    somatoria = sum(b)
+  ) |> 
+  dplyr::ungroup() |> 
+  dplyr::arrange(somatoria)
+```
+
+## [I]{.pill-1} Arrange
+
+- E podemos ordenar os valores na ordem descrescente
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::group_by(a) |> 
+  dplyr::summarise(
+    somatoria = sum(b)
+  ) |> 
+  dplyr::ungroup() |> 
+  dplyr::arrange(desc(somatoria))
+```
+
+## [I]{.pill-1} Arrange
+
+- Se a ordenação for passada para variável numérica, ela irá dispor os dados em ordem de grandeza. Mas se for passada uma variável do tipo `character`, ela vai ordenar de forma alfabética. 
+
+## [I]{.pill-1} Arrange
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = letters[1:10],
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::arrange(a)
+```
+
+## [I]{.pill-1} Arrange
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = letters[1:10],
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::arrange(desc(a))
+```
+
+## [I]{.pill-1} Arrange
+
+- Nós podemos passar mais de um critério de ordenação
+- E a ordem em que passamos esses critérios importa!!!
+
+## [I]{.pill-1} Arrange
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::arrange(a, b)
+```
+
+## [I]{.pill-1} Arrange
+
+
+```{r, eval=T, message=T}
+set.seed(3)
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c"),
+  b = sample(1:10, 10, replace=T)
+)
+
+da3 |> 
+  dplyr::arrange(b, a)
+```
+
+
+## [I]{.pill-1} Distinct
+
+- Podemos descobrir todas as categorias existentes de uma determinada coluna com a função `dplyr::distinct()`
+
+```{r, eval=T, message=T}
+da3 <- tibble::tibble(
+  a = c("a", "a", "a", "a", "a", "b", "b", "c", "c", "c")
+)
+
+da3 |> 
+  dplyr::distinct(a)
+```
+
+## [I]{.pill-1} Distinct
+
+- Essa função pode receber várias colunas. Neste caso, ela vai manter toda a combinatória de casos encontrados
+
+```{r, eval=T, message=T}
+da3 <- tibble::tibble(
+  a = c("a", "a", "h", "a", "a", "b", "d", "c", "c", "c"),
+  b = c("b", "d", "e", "a", "a", "f", "e", "c", "c", "c")
+)
+
+da3 |> 
+  dplyr::distinct(a, b)
+```
+
+# Pílula [2]{.pill-2}
+
+## [I]{.pill-2} Saindo do dplyr...
+
+- Precisamos entender bem a diferença de funções que atingem bases de dados e funções que atingem vetores
+- As funções do dplyr se referem, via de regra, a *bases de dados*
+- Fiquem com isso em mente, e iremos ver outros pacotes agora em diante. Os novos pacotes que veremos se aplicam para **vetores** ou para **colunas**, mas não para a base inteira
+- As funções que recebem **vetores** ficam DENTRO do `dplyr::mutate()`
+
+## [I]{.pill-2} stringr
+
+- O primeiro pacote que iremos ver se chama `stringr`
+- Ele serve para manipular vetores atômicos do tipo `character` ou `string`
+- As funções do `stringr` começam todas com o nome `str_*`, em que * será substituído pela ação que a função irá fazer.
+
+## [I]{.pill-2} stringr
+
+Vejamos exemplos:
+
+  - `stringr::str_detect` = detecta se um determinado padrão está presente em um elemento do vetor, retornando TRUE (caso esse padrão seja identificado) ou FALSE (caso esse padrão não seja identificado*)
+  - `stringr::str_remove` = retira um padrão de dentro de cada elemento do vetor. Se o padrão não for encontrado, ele mantém a string do mesmo jeito
+  - `stringr::str_extract` = extrai um determinado padrão dentro de cada elemento do vetor
+  
+
+## [I]{.pill-2} stringr
+
+O que veremos a seguir?
+
+1. sintaxe das funções
+2. as variantes `stringr::str_*_all`
+3. o `stringr` se aplica a cada elemento do vetor
+4. pipe funciona?
+5. padrão / _pattern_
+6. e dentro da pipeline, como fica?
+
+## [I]{.pill-2} stringr
+
+Vamos para o R
+
+```{r}
+txt <- "como será que funciona o pacote stringr?" # vetor atômico <chr>
+
+# 1) exemplos e sintaxe
+stringr::str_detect(string = txt, pattern = "r")
+stringr::str_count(txt, "r")
+stringr::str_remove(txt, "r")
+stringr::str_extract(txt, "r")
+
+# 2) a variante `all` das funções
+stringr::str_remove(txt, "r")
+stringr::str_remove_all(txt, "r")
+
+# 3) a análise é feita para cada elemento do vetor
+txts <- c(
+  "este é o texto 1",
+  "agora temos o texto 2",
+  "e o texto 3 também!!"
+)
+
+stringr::str_detect(txts, "texto")
+
+# Eu quero retirar, de cada elemento do vetor, a palavra 'texto'.
+# Qual das funções abaixo irá funcionar?
+stringr::str_remove(txts, "texto")
+stringr::str_remove_all(txts, "texto")
+
+# E agora?
+txts2 <- c(
+  "este é o texto 1",
+  "agora temos o texto 2",
+  "e o texto 3 também!!",
+  "tem o texto 4 que contem duas palavras texto"
+)
+
+stringr::str_remove(txts2, "texto")
+stringr::str_remove_all(txts2, "texto")
+
+
+# 4) O pipe funciona !!!
+stringr::str_remove(txts, "texto") |>
+  stringr::str_detect("texto")
+stringr::str_remove_all(txts, "texto") |>
+  stringr::str_detect("texto")
+
+# 5) pattern e regex
+txt_cnj <- c(
+  "eu tenho um processo aqui 00000235120248260471",
+  "aqui tem outro processo 0000035-74.2024.8.26.0177",
+  "agora eu to com um número (0000079-36.2023.8.26.0660) que fica no meio do texto",
+  "qual a diferença de um número de telefone +55 11 91827-8901 e de um número do CNJ? 00001461720238260299"
+)
+
+# queremos retirar o número do CNJ de todos os casos
+stringr::str_extract(txt_cnj, "[:digit:]")
+stringr::str_extract(txt_cnj, "\\d")
+stringr::str_extract_all(txt_cnj, "\\d")
+stringr::str_extract(txt_cnj, ".")
+stringr::str_extract(txt_cnj, "\\.")
+stringr::str_extract(txt_cnj, "\\d{7}-?\\d{2}\\.?\\d{4}\\.?\\d\\.?\\d{2}\\.?\\d{4}")
+
+# 6) em uma pipeline, isso fica assim:
+tibble::tibble(
+  txt = txt_cnj
+) |>
+  dplyr::mutate(
+    id_processo = txt_cnj |>
+      stringr::str_extract("\\d{7}-?\\d{2}\\.?\\d{4}\\.?\\d\\.?\\d{2}\\.?\\d{4}") |>
+      stringr::str_remove_all("[:punct:]") |>
+      stringr::str_squish()
+  )
+```
+
+# Pílula [3]{.pill-3}
+
+## [I]{.pill-3} lubridate
+
+- O último pacote do dia é o `lubridate`
+- Ele busca lidar com manipulação de datas
+- O lubridate recebe um **vetor**, assim como o `stringr`
+    - Então o lubridate é usado  dentro do `dplyr::mutate()`
+
+## [I]{.pill-3} A classe para datas
+
+- Datas são um tipo específico, que pode aparecer como `date` ou `POSIXct`
+- Em realidade, datas são do tipo `numeric`, mas que aparecem para o usuário como se fosse uma string. 
+- **UNIX Epoch**: O número por trás de cada data é a quantidade de segundos desde o dia 01/01/1970 às 00 horas e 00 minutos e 00 segundos. 
+- O tipo `date` é printado no seguinte formato: 
+- Ver [https://www.epochconverter.com/](https://www.epochconverter.com/)
+
+::: {.center}
+**YYYY-MM-dd HH:mm:ss**
+:::
+
+## [I]{.pill-3} A classe para datas
+
+- Pode acontecer de as datas aparecerem como `character`
+- Esse formato faz com que a data perca o seu sentido numérico, tornando-se difícil realizarmos filtros (`dplyr::filter()`) 
+- O `lubridate` busca resolver esse problema!!!
+
+## [I]{.pill-3} lubridate
+
+- as funções mais básicas do `lubridate` são as funções que convertem vetores do tipo `character` para vetores do tipo `POSIXct` (ou de forma simplificada, para um vetor do tipo `date`)
+- nessas funções, precisamos avaliar qual é o formato da data que está aparecendo em texto, pode ser:
+    - Formato brasileiro: dia-mes-ano
+    - Formato japonês: ano-mes-dia
+    - Formato americano: mes-dia-ano
+
+## [I]{.pill-3} lubridate
+
+- a partir da nossa avaliação, usamos uma função do lubridate equivalente
+
+```{r, eval=T, message=T}
+dt_txt_br <- "20/01/2024"
+dt_txt_jp <- "2024/01/20"
+dt_txt_us <- "01/20/2024"
+
+lubridate::dmy(dt_txt_br)
+lubridate::ymd(dt_txt_jp)
+lubridate::mdy(dt_txt_us)
+```
+
+## [I]{.pill-3} lubridate
+
+- A data pode conter horas, minutos e segundos também!
+- Se não for informado o tempo, então ele será presumido como 00
+```{r, eval=T, message=T}
+dttm_txt_br <- "20/01/2024 09:08:00"
+dttm_txt_jp <- "2024/01/20 10:01"
+dttm_txt_us <- "01/20/2024 14"
+
+lubridate::dmy_hms(dttm_txt_br)
+lubridate::ymd_hm(dttm_txt_jp)
+lubridate::mdy_h(dttm_txt_us)
+```
+
+## [I]{.pill-3} lubridate
+
+- O pacote `lubridate` faz muito mais coisas! Você pode fazer contas com datas, ou lidar com fuso horário e horários de versão ao longo do mundo. Para mais informações, ver: 
+- [O livro da Curso-R](https://livro.curso-r.com/7-5-o-pacote-lubridate.html)
+- [O livro do Hadley, R4DS](https://r4ds.had.co.nz/dates-and-times.html)
+- [O artigo original do Garrett Grolemund e do Hadley Wickham](https://www.jstatsoft.org/article/view/v040i03)

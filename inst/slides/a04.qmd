@@ -350,7 +350,7 @@ b = "1"
 - Cuidado com **floating point**
 
 ```{r, eval=T, message=T}
-a = 0.38
+a = 0.58
 b = 0.08
 print(a-b)
 ```
@@ -358,7 +358,7 @@ print(a-b)
 - O que vocês esperam que seja o resultado da seguinte expressão? TRUE ou FALSE?
 
 ```{r}
-(a-b) == 0.3
+(a-b) == 0.5
 ```
 
 
@@ -367,7 +367,7 @@ print(a-b)
 - Cuidado com **floating point**
 
 ```{r, eval=T, message=T}
-a = 0.38
+a = 0.58
 b = 0.08
 print(a-b)
 ```
@@ -375,7 +375,7 @@ print(a-b)
 - O que vocês esperam que seja o resultado da seguinte expressão? TRUE ou FALSE?
 
 ```{r, eval=T, message=T}
-(a-b) == 0.3
+(a-b) == 0.5
 ```
 
 ## [I]{.pill-1} Comparações
@@ -549,13 +549,13 @@ letters
 - Isso é **base R** (nativo) ou vem de um **pacote**?
 :::
 ::: {.fragment}
-- Isso é uma **função nativa** ou são **dados nativos**?
+- Isso é uma **função** ou são **dados**?
 :::
 ::: {.fragment}
 - Esses dados são um **vetor atômico** ou uma **lista**?
 :::
 ::: {.fragment}
-- Qual é o tipo esperado desse vetor atômico? `character`, `double`, `numeric` ou `logical`?
+- Qual é o tipo esperado desse vetor atômico? `character`, `double`, `integer` ou `logical`?
 :::
 ::: {.fragment}
 ```{r, eval=T, message=T}

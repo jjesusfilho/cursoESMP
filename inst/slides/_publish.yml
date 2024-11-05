@@ -1,0 +1,4 @@
+- source: a04.qmd
+  quarto-pub:
+    - id: 1b0c3440-95e3-4a0d-b680-a5d9d27c8802
+      url: 'https://rcfeliz.quarto.pub/cursoesmp-a04'
