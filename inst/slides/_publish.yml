@@ -2,3 +2,9 @@
   quarto-pub:
     - id: 1b0c3440-95e3-4a0d-b680-a5d9d27c8802
       url: 'https://rcfeliz.quarto.pub/cursoesmp-a04'
+- source: a05.qmd
+  quarto-pub:
+    - id: 9309fab4-31ba-4487-a9d7-94e867f92766
+      url: 'https://rcfeliz.quarto.pub/a05'
+    - id: 91db384d-b914-4933-b012-29b89743db14
+      url: 'https://rcfeliz.quarto.pub/cursoesmp-a05'

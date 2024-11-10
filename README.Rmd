@@ -140,7 +140,13 @@ aulas_2024 |>
   ) |> 
   dplyr::transmute(
     aula = stringr::str_pad(aula, 2, "left", "0"),
-    slide = glue::glue("[{conteudo}](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a{aula}.pdf)")
+    slide = dplyr::case_when(
+      aula == "01" ~ glue::glue("[{conteudo}](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a{aula}.pdf)"),
+      aula == "02" ~ glue::glue("[{conteudo}](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/DesenhoPesquisa.zip)"),
+      aula == "03" ~ glue::glue("[{conteudo}](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/aula3_analise_de_viabilidade.qmd)"),
+      aula == "04" ~ glue::glue("[{conteudo}](https://rcfeliz.quarto.pub/cursoesmp-a04/)"),
+      aula == "05" ~ glue::glue("[{conteudo}](https://rcfeliz.quarto.pub/cursoesmp-a05/)")
+    )
   ) |> 
   knitr::kable()
 ```
