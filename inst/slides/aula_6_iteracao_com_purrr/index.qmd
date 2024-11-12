@@ -143,8 +143,8 @@ Nos exemplos acima, o map gerou uma lista. No entanto, nem sempre queremos uma l
 - map_dbl: retorna um vetor de flutuantes (doubles)
 - map_int: retorna um vetor de inteiros
 - map_lgl: retorna um vetor de valores lógicos
-No exemplo acima, melhor seria se utilizássemos map_dbl:
 
+No exemplo acima, melhor seria se utilizássemos map_dbl:
 ```r
 map_dbl(c(4,9,16,25), sqrt)
 ```
