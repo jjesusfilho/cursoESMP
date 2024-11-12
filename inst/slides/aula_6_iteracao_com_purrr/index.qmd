@@ -1,0 +1,198 @@
+---
+title: "Iteração com purrr"
+author: "José de Jesus Filho"
+format: revealjs
+execute: 
+  echo: true
+---
+
+## Noção de iteração
+
+Iteração talvez seja uma das tarefas mais elementares e importantes em pragramação. Todas as linguagens de programação permitem iterar por meio de laços de repetição. No R não é diferente e há mais de uma forma de fazer isso. A mais básica delas é vetorização. Por exemplo, se eu tenho um vetor de valores e multiplico este vetor por algum número, estou realizando uma iteração, conhecida como vetorização:
+
+```{r}
+1:5*2
+```
+
+## For loop
+Veja que eu multipliquei os números de 1 a 5 por 2 e cada um dos valores foi multiplicado. Por trás disso, ocorreu um laço de repetição, mas escrito em linguagem C, que é mais rápida. Você poderia escrever um laço de repetição no R para chegar ao mesmo resultado. No entanto, isso seria mais lento e mais verboso:
+
+```{r echo = TRUE}
+
+
+for (i in 1:5){
+  
+  print(2*i)
+  
+}
+
+```
+
+## Explicação
+
+Note acima que eu usei for seguido de parênteses e dentro deles coloquei a letra i, a qual assumirá os valores de um a cinco a cada laço. Depois dos parênteses, eu abro chaves {} e dentro delas eu coloco tudo o que eu quero que o R faça com o i para alcançar o resultado desejado.
+
+## While
+
+Além do for, existe o while, o qual informa o R para realizar uma operação enquanto a condição estabelecida for verdadeira:
+
+```{r}
+x <- 1 ## Valor inicial de x
+y <- 0 ## Pode ser qualquer valor. Apenas para que o R saiba que o y existe e é um número.
+
+while (y < 20) {  ## Informa o R que a operação deve ser realizada enquanto o y for menor que 20.
+  
+  y <- x^2 ## Altera y a cada laço.
+  
+  print(y) ## Imprime o y alterado.
+  
+  x <- x + 1 ## Adiciona 1 a x para ser usado na próxima iteração.
+}
+
+```
+
+## Iteração com purrr
+
+No tidyverse usamos as funções do pacote purrr para iteração sobre objetos. Há dois grupos de funções, o grupo map e o grupo walk. O primeiro retorna um objeto R, o segundo não retorna objeto algum e é útil para efeitos colaterais, como salvar arquivos ou gerar gráficos de forma interativa. Carregue o tidyverse:
+
+```{r}
+library(tidyverse)
+```
+
+
+## Sintaxe básica do map
+
+Basicamente, o primeiro argumento do map é o objeto, que pode ser um vetor ou uma lista de elementos. O segundo é uma função anônima, criada com ~ (til), \\(x) ou function(x), a qual será aplicada sobre cada objeto e, dentro dela, .x (ponto x). Este representa cada elemento do objeto:
+
+```r
+
+map(objeto, ~funcao(.x, ...)) # As reticências (ellipsis) indicam eventuais outros argumentos.
+```
+## Outras sintaxes:
+
+Você também pode chamar o map e colocar a função, ou um codigo dentro de chaves:
+```r
+map(objeto, ~{
+  funcao(.x,...)
+})
+```
+Você pode chamar uma função anônima de forma ainda mais explícita:
+
+```r
+map(objeto, function(x)(funcao(.x)))
+
+```
+
+## Exemplos
+
+```{r}
+
+
+map(c(4,9,16,25), ~sqrt(.x))
+
+
+```
+
+## Exemplo
+```{r}
+
+map(c(4,9,16,25), ~{ 
+  sqrt(.x)
+  })
+
+```
+
+## Exemplo
+
+```{r}
+map(c(4,9,16,25), function(x) sqrt(x))
+```
+
+## Exemplo
+
+```{r}
+
+map(c(4,9,16,25), ~.x |> sqrt())
+
+```
+
+## Exemplo
+Quando é o primeiro e único do argumento, a função anônima pode ficar implícita:
+
+```{r}
+
+
+map(c(4,9,16,25), sqrt)
+
+
+```
+## Exemplo
+
+Você também pode usar a nova notação do r \\(x)
+
+```{r}
+map(c(4,9,16,25), \(x) sqrt(x))
+
+```
+
+## Variações do map
+
+Nos exemplos acima, o map gerou uma lista. No entanto, nem sempre queremos uma lista. Se quisermos um vetor, temos de especificar o tipo de retorno com as variações do map. São elas:
+
+- map_chr: retorna um vetor de caracteres
+- map_dbl: retorna um vetor de flutuantes (doubles)
+- map_int: retorna um vetor de inteiros
+- map_lgl: retorna um vetor de valores lógicos
+No exemplo acima, melhor seria se utilizássemos map_dbl:
+
+```r
+map_dbl(c(4,9,16,25), sqrt)
+```
+
+## Retornar um dataframe
+
+- map_dfr: retorna um dataframe resultado do empilhamento (junção vertical) de outros dataframes.
+- map_dfc: retorna uma dataframe resultado de emparalhamento (junção horizontal) de outros dataframes
+
+## Walk
+
+Walk tem a mesma sintaxe, mas não retorna objetos. Ele é útil quando queremos baixar várias páginas no disco. Se você tentar fazer o mesmo com walk, veja o que acontece, ou melhor, o que não acontece:
+
+```{r}
+walk(c(4,9,16,25), ~sqrt(.x))
+
+```
+
+## Walk
+
+Mas você pode salvar em disco. Tente reproduzir o exemplo abaixo e verificar que nada foi gerado na área de trabalho, nem no console, mas foram salvos cinco arquivos no seu diretório atual.
+
+```r
+
+walk(c(4,9,16,25), ~sqrt(.x) |> cat(file = paste0("raiz_de_", .x, ".txt")))
+```
+
+## Mais variações de map e de walk
+
+Há uma segunda versão para todos verbos acima: map2, map2_chr, map2_dbl, map2_int, map2_lgl, map2_dfr, map2_dfc e walk2. Elas permitem iterar sobre dois objetos do mesmo tamanho. Vejamos um exemplo:
+
+```{r}
+map2_chr(1:5, letters[1:5], ~paste(.x, .y)) # O primeiro objeto é representado em cada iteração por .x e o segundo por .y
+```
+
+## Mais variações: múltiplos objetos: pmap e pwalk.
+
+Quando precisar iterar em mais de dois objetos, você coloca p antes de qualquer desses verbos. No entanto você precisa colocar o objeto em uma lista e usar function(x,y, z, w, …) ou os nomes de cada elemento da lista. Vejamos:
+
+
+```{r}
+lista <- list(x = 1:5, y = letters[1:5], z = c("I","II","III","IV","V"))
+
+pmap_chr(lista, function(x,y, z) paste(x,y,z, sep = "-"))
+
+
+```
+
+
+
+
