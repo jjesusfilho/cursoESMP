@@ -75,7 +75,7 @@ O cronograma das aulas segue abaixo:
 | 04 | [Estruturação de dados I (base R e dplyr)](https://rcfeliz.quarto.pub/cursoesmp-a04/) |
 | 05 | [Estruturação de dados II (lubridate e stringr)](https://rcfeliz.quarto.pub/cursoesmp-a05/) |
 | 06 | [Estruturação de dados III (iteração com purrr)](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_6_iteracao_com_purrr) |
-| 07 | [Estruturação de dados IV (LLMs e prompt engineering)](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_6_iteracao_com_purrr) |
+| 07 | [Estruturação de dados IV (LLMs e prompt engineering)](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_7_ia_direito) |
 | 08 | [Visualização de dados I (estatística básica e ggplot2)](https://anicolella.github.io/jurimetria/) |
 
 ## Materiais extras
