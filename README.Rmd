@@ -146,7 +146,8 @@ aulas_2024 |>
       aula == "03" ~ glue::glue("[{conteudo}](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_3_analise_de_viabilidade)"),
       aula == "04" ~ glue::glue("[{conteudo}](https://rcfeliz.quarto.pub/cursoesmp-a04/)"),
       aula == "05" ~ glue::glue("[{conteudo}](https://rcfeliz.quarto.pub/cursoesmp-a05/)"),
-            aula == "06" ~ glue::glue("[{conteudo}](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_6_iteracao_com_purrr)")
+      aula == "06" ~ glue::glue("[{conteudo}](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_6_iteracao_com_purrr)"),
+      aula == "08 e 09" ~ glue::glue("[{conteudo}](https://anicolella.github.io/jurimetria/)")
     )
   ) |> 
   knitr::kable()
