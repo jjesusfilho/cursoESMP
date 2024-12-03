@@ -12,7 +12,11 @@
     "installVscDebugger": false,
     "useTesting": false
     },
-    "ghcr.io/rocker-org/devcontainer-features/pandoc:1": {}
+    "ghcr.io/rocker-org/devcontainer-features/pandoc:1": {},
+    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:latest": {},
+    "ghcr.io/rocker-org/devcontainer-features/r-packages:1": {
+        "packages": "usethis,tidyverse"
+    }
   },
 
   // Configure tool-specific properties.

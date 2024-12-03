@@ -1,4 +1,6 @@
-^anatocismo\.Rproj$
+^cursoESMP\.Rproj$
 ^\.Rproj\.user$
 inst
 ^README\.Rmd$
+^\.devcontainer$
+^LICENSE\.md$
