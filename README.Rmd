@@ -136,7 +136,7 @@ aulas_2025 |>
 aulas_2024 |> 
   dplyr::bind_rows(aulas_2025) |> 
   dplyr::filter(
-    lubridate::dmy(dt) =< lubridate::today()
+    lubridate::dmy(dt) < lubridate::today()
   ) |> 
   dplyr::transmute(
     aula = stringr::str_pad(aula, 2, "left", "0"),
@@ -147,7 +147,8 @@ aulas_2024 |>
       aula == "04" ~ glue::glue("[{conteudo}](https://rcfeliz.quarto.pub/cursoesmp-a04/)"),
       aula == "05" ~ glue::glue("[{conteudo}](https://rcfeliz.quarto.pub/cursoesmp-a05/)"),
       aula == "06" ~ glue::glue("[{conteudo}](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_6_iteracao_com_purrr)"),
-      aula == "08" ~ glue::glue("[{conteudo}](https://anicolella.github.io/jurimetria/)")
+      aula == "08" ~ glue::glue("[{conteudo}](https://anicolella.github.io/jurimetria/)"),
+      aula == "09" ~ glue::glue("[{conteudo}](https://anicolella.github.io/jurimetria/)")
     )
   ) |> 
   knitr::kable()
