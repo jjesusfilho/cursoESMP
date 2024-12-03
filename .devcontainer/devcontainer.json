@@ -11,7 +11,8 @@
     "installRMarkdown": true,
     "installVscDebugger": false,
     "useTesting": false
-    }
+    },
+    "ghcr.io/rocker-org/devcontainer-features/pandoc:1": {}
   },
 
   // Configure tool-specific properties.
