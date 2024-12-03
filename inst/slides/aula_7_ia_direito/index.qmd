@@ -1,0 +1,140 @@
+---
+title: "Introdução aos modelos de linguagem em grande escala"
+author: "José de Jesus Filho"
+format: revealjs
+execute: 
+  echo: false
+---
+
+## Textos jurídicos e seus desafios
+
+- Linguagem natural (dado não estruturado).
+
+- Longa argumentação.
+
+- Textos muito longos.
+
+- Juridiquês.
+
+- 
+
+## Histórico de NLP
+
+- Regras gramaticais e dicionários
+- Identificação de padrões
+- Expressões regulares
+- Buscas textuais com dicionários de sinônimos, fonemas,
+radicais etc
+
+## Métodos estatísticos
+
+- Modelos baseados em estatísticas e probabilidades (ex.: análise de frequência, n-grams).
+
+- Introdução de corpora anotados para treinamento.
+
+## Redes neurais e representações distribuídas
+
+- Word2Vec
+- GloVe
+- FastText
+
+## Representações distribuídas (embeddings)
+
+Embeddings são representações numéricas de dados complexos, como palavras, frases, imagens ou até mesmo objetos mais abstratos, em um espaço vetorial de dimensão finita. Imagine transformar um texto inteiro em um único ponto em um gráfico multidimensional!
+
+## Embeddings: Intuição
+
+```{r}
+library(tidyverse)
+df <- tibble(nome = c("avô","homem","adulto","mulher","menino","criança","menina","bebê"),
+       sexo = c(1,1,5,9,1,5,9,5),
+       idade = c(9,7,7,7,2,2,2,1))
+
+ggplot(df, aes(x = sexo, y = idade)) +
+     geom_point(aes(color = nome), size = 2)+
+     geom_text(aes(label = nome), vjust =-.5)+
+     guides(color = "none")+
+     theme_bw()
+```
+
+## Redes neurais profundas
+
+- RNN (LSTM): processamento sequencial
+- Transformers
+
+##  Transformação com Transformers e LLMs
+###  Introdução aos Transformers
+
+- Artigo "Attention is All You Need" (2017):
+       -- Mecanismo de atenção para capturar relações de longo alcance no texto.
+- Estrutura paralelizável e escalável.
+- Componentes principais:
+        Self-Attention, Multi-Head Attention, camadas feed-forward.
+
+##  Evolução dos Transformers para LLMs
+
+- Modelos marcantes:
+        - GPT (Generative Pre-trained Transformer): Autoregressivo.
+         - BERT (Bidirectional Encoder Representations from Transformers): Bidirecional.
+        - Outros (T5, RoBERTa, etc.).
+- Treinamento em larga escala:
+        -- Uso de grandes corpora de texto e infraestruturas de computação avançadas.
+- Modelos como GPT-3, GPT-4, PaLM, LLaMA.
+
+
+## Conceito de Prompt
+
+Prompts no contexto de IA generativa são instruções ou perguntas, acompanhadas ou não de dados ou exemplos a fim de obter respostas desejadas da IA generativa.
+
+## Limitações
+
+1 - Falta de memória persistente
+
+2 - Natureza probabilística: falta de reprodutibilidade
+
+3 - Informação desatualizada
+
+4 - Alucinação
+
+5 - Alto uso de recursos computacionais
+
+6 - Janela limitada
+
+7 - Especificidade do domínio
+
+## Tópicos importantes
+
+## Chain of thought
+
+## Tree of Thought
+
+Melhora o racioncíno da LLM ao orientar a LLM a tomar diferentes caminhos antes de encontrar a solução. Diferentemente do CoT, o ToT não segue um processo linear de raciocínio.
+
+1 - Raciocínio estruturado
+
+2 - Explora múltiplos caminhos
+
+3 - Poda e seleção
+
+4 - Ida e volta
+
+5 - Processo de decisão hierárquico
+
+
+## Forçar a LLM a ser factual
+
+Restringir a LLM aos dados fornecidos. Forçar respostas. Dar exemplos de respostas.
+
+## Explicitar o fim do prompt
+
+"Escreva um poema descrevendo um dia lindo\<\|endofprompt\|\>. Era um lindo dia de inverno"
+
+## Forçar a linguagem
+
+Ser imperativo.. 
+## Dar instruções antes dos exemplos.
+
+## Auto-consistência: gerar multiplas respostas para ao mesmo prompt.
+
+## Avaliação
+
