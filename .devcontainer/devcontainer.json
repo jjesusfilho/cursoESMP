@@ -8,7 +8,7 @@
     "installBspm": true,
     "installRadian": true,
     "installDevTools": true,
-    "installRMarkdown": false,
+    "installRMarkdown": true,
     "installVscDebugger": false,
     "useTesting": false
     }
