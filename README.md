@@ -62,11 +62,6 @@ O cronograma das aulas segue abaixo:
 
 ## Slides
 
-    #> Warning: There was 1 warning in `dplyr::filter()`.
-    #> ℹ In argument: `lubridate::dmy(dt) < lubridate::today()`.
-    #> Caused by warning in `with_tz.default()`:
-    #> ! Unrecognized time zone ''
-
 | aula | slide |
 |:---|:---|
 | 01 | [Introdução à jurimetria](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a01.pdf) |
@@ -77,6 +72,12 @@ O cronograma das aulas segue abaixo:
 | 06 | [Estruturação de dados III (iteração com purrr)](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_6_iteracao_com_purrr) |
 | 07 | [Estruturação de dados IV (LLMs e prompt engineering)](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_7_ia_direito) |
 | 08 | [Visualização de dados I (estatística básica e ggplot2)](https://anicolella.github.io/jurimetria/) |
+| 09 | [Visualização de dados II (estatística básica e ggplot2)](https://anicolella.github.io/jurimetria/) |
+| 10 | NA |
+| 11 | NA |
+| 12 | NA |
+| 13 | NA |
+| 14 | NA |
 
 ## Materiais extras
 
