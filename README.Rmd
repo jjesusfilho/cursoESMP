@@ -153,7 +153,7 @@ aulas_2024 |>
       aula == "14" ~ glue::glue("[{conteudo}]() - [Árvore de decisão](https://docs.google.com/presentation/d/1l21AEyGm8DiqMqoDEgLbRUwkGtQn0syh/edit?slide=id.p1#slide=id.p1)"),
       aula == "15" ~ glue::glue("[{conteudo}]()"),
        aula == "16" ~ glue::glue("[{conteudo}](https://docs.google.com/presentation/d/1clPmKcDoWazo-mM2VwuvGKRR3bIBTvBA/edit?usp=sharing&ouid=106743576123969683941&rtpof=true&sd=true)"),
-      aula == "19" ~ glue::glue("[{conteudo}]()")
+      aula == "19" ~ glue::glue("[{conteudo}](https://github.com/jjesusfilho/cursoESMP/blob/main/inst/slides/aula_16/relatorio_jurimetria_consignado_em_06_11_2024-1.pdf)")
 
     )
   ) |> 

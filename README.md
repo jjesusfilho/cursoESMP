@@ -82,7 +82,7 @@ O cronograma das aulas segue abaixo:
 | 16 | [Análise de sobrevivência](https://docs.google.com/presentation/d/1clPmKcDoWazo-mM2VwuvGKRR3bIBTvBA/edit?usp=sharing&ouid=106743576123969683941&rtpof=true&sd=true) |
 | 17 | NA |
 | 18 | NA |
-| 19 | [Estudos de caso I]() |
+| 19 | [Estudos de caso I](https://github.com/jjesusfilho/cursoESMP/blob/main/inst/slides/aula_16/relatorio_jurimetria_consignado_em_06_11_2024-1.pdf) |
 | 20 | NA |
 
 ## Materiais extras
