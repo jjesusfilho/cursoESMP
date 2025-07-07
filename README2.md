@@ -77,13 +77,7 @@ O cronograma das aulas segue abaixo:
 | 11 | NA |
 | 12 | NA |
 | 13 | NA |
-| 14 | [Regressão logística]() - [Árvore de decisão](https://docs.google.com/presentation/d/1l21AEyGm8DiqMqoDEgLbRUwkGtQn0syh/edit?slide=id.p1#slide=id.p1) |
-| 15 | [Análise da taxa de vitória e o Teorema de Priest & Klein]() |
-| 16 | [Análise de sobrevivência](https://docs.google.com/presentation/d/1clPmKcDoWazo-mM2VwuvGKRR3bIBTvBA/edit?usp=sharing&ouid=106743576123969683941&rtpof=true&sd=true) |
-| 17 | NA |
-| 18 | NA |
-| 19 | [Estudos de caso I]() |
-| 20 | NA |
+| 14 | NA |
 
 ## Materiais extras
 
