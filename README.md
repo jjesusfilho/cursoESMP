@@ -91,3 +91,4 @@ O cronograma das aulas segue abaixo:
 |:---|:---|
 | Link de download do R e RStudio | <https://posit.co/download/rstudio-desktop/> |
 | R for Data Science (R4DS) | <https://r4ds.hadley.nz/> |
+| O tempo do processo judicial | <https://direitoemdados.consudata.com.br/posts/2022-10-06-sobrevivencia/> |
