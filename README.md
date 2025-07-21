@@ -32,63 +32,73 @@ O cronograma das aulas segue abaixo:
 
 #### Módulo I (2024)
 
-| Aula | Data | Conteúdo | Professor |
-|---:|:---|:---|:---|
-| 1 | 08/10/2024 | Introdução à jurimetria | Ricardo Feliz Okamoto |
-| 2 | 15/10/2024 | Desenho de pesquisa | Alexandre Chibebe Nicolella |
-| 3 | 22/10/2024 | Análise de viabilidade e Listagem de processos | José de Jesus Filho |
-| 4 | 29/10/2024 | Estruturação de dados I (base R e dplyr) | Ricardo Feliz Okamoto |
-| 5 | 05/11/2024 | Estruturação de dados II (lubridate e stringr) | Ricardo Feliz Okamoto |
-| 6 | 12/11/2024 | Estruturação de dados III (iteração com purrr) | José de Jesus Filho |
-| 7 | 19/11/2024 | Estruturação de dados IV (LLMs e prompt engineering) | José de Jesus Filho |
-| 8 | 26/11/2024 | Visualização de dados I (estatística básica e ggplot2) | Alexandre Chibebe Nicolella |
-| 9 | 03/12/2024 | Visualização de dados II (estatística básica e ggplot2) | Alexandre Chibebe Nicolella |
+| Aula | Data       | Conteúdo                                                | Professor                   |
+|-----:|:-----------|:--------------------------------------------------------|:----------------------------|
+|    1 | 08/10/2024 | Introdução à jurimetria                                 | Ricardo Feliz Okamoto       |
+|    2 | 15/10/2024 | Desenho de pesquisa                                     | Alexandre Chibebe Nicolella |
+|    3 | 22/10/2024 | Análise de viabilidade e Listagem de processos          | José de Jesus Filho         |
+|    4 | 29/10/2024 | Estruturação de dados I (base R e dplyr)                | Ricardo Feliz Okamoto       |
+|    5 | 05/11/2024 | Estruturação de dados II (lubridate e stringr)          | Ricardo Feliz Okamoto       |
+|    6 | 12/11/2024 | Estruturação de dados III (iteração com purrr)          | José de Jesus Filho         |
+|    7 | 19/11/2024 | Estruturação de dados IV (LLMs e prompt engineering)    | José de Jesus Filho         |
+|    8 | 26/11/2024 | Visualização de dados I (estatística básica e ggplot2)  | Alexandre Chibebe Nicolella |
+|    9 | 03/12/2024 | Visualização de dados II (estatística básica e ggplot2) | Alexandre Chibebe Nicolella |
 
 #### Módulo II (2025)
 
-| Aula | Data | Conteúdo | Professor |
-|---:|:---|:---|:---|
-| 10 | 18/02/2025 | Introdução à Probabilidade | Alexandre Chibebe Nicolella |
-| 11 | 25/02/2025 | Variável Aleatória e Tipos de Variáveis | Alexandre Chibebe Nicolella |
-| 12 | 11/03/2025 | Teste de Hipótese - leitura de resultados e interpretação | Alexandre Chibebe Nicolella |
-| 13 | 18/03/2025 | Regressão linear - intuição | Alexandre Chibebe Nicolella |
-| 14 | 25/03/2025 | Regressão logística | José de Jesus Filho |
-| 15 | 01/04/2025 | Análise da taxa de vitória e o Teorema de Priest & Klein | Ricardo Feliz Okamoto |
-| 16 | 08/04/2025 | Análise de sobrevivência | José de Jesus Filho |
-| 17 | 15/04/2025 | Changepoint detection / Quebra Estrutural | Ricardo Feliz Okamoto |
-| 18 | 22/04/2025 | Resultados | Ricardo Feliz Okamoto |
-| 19 | 29/04/2025 | Estudos de caso I | José de Jesus Filho |
-| 20 | 06/05/2025 | Estudos de caso II | Ricardo Feliz Okamoto |
+| Aula | Data       | Conteúdo                                                  | Professor                   |
+|-----:|:-----------|:----------------------------------------------------------|:----------------------------|
+|   10 | 18/02/2025 | Introdução à Probabilidade                                | Alexandre Chibebe Nicolella |
+|   11 | 25/02/2025 | Variável Aleatória e Tipos de Variáveis                   | Alexandre Chibebe Nicolella |
+|   12 | 11/03/2025 | Teste de Hipótese - leitura de resultados e interpretação | Alexandre Chibebe Nicolella |
+|   13 | 18/03/2025 | Regressão linear - intuição                               | Alexandre Chibebe Nicolella |
+|   14 | 25/03/2025 | Regressão logística                                       | José de Jesus Filho         |
+|   15 | 01/04/2025 | Análise da taxa de vitória e o Teorema de Priest & Klein  | Ricardo Feliz Okamoto       |
+|   16 | 08/04/2025 | Análise de sobrevivência                                  | José de Jesus Filho         |
+|   17 | 15/04/2025 | Changepoint detection / Quebra Estrutural                 | Ricardo Feliz Okamoto       |
+|   18 | 22/04/2025 | Resultados                                                | Ricardo Feliz Okamoto       |
+|   19 | 29/04/2025 | Estudos de caso I                                         | José de Jesus Filho         |
+|   20 | 06/05/2025 | Estudos de caso II                                        | Ricardo Feliz Okamoto       |
 
 ## Slides
 
-| aula | slide |
-|:---|:---|
-| 01 | [Introdução à jurimetria](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a01.pdf) |
-| 02 | [Desenho de pesquisa](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/DesenhoPesquisa.zip) |
-| 03 | [Análise de viabilidade e Listagem de processos](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_3_analise_de_viabilidade) |
-| 04 | [Estruturação de dados I (base R e dplyr)](https://rcfeliz.quarto.pub/cursoesmp-a04/) |
-| 05 | [Estruturação de dados II (lubridate e stringr)](https://rcfeliz.quarto.pub/cursoesmp-a05/) |
-| 06 | [Estruturação de dados III (iteração com purrr)](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_6_iteracao_com_purrr) |
-| 07 | [Estruturação de dados IV (LLMs e prompt engineering)](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_7_ia_direito) |
-| 08 | [Visualização de dados I (estatística básica e ggplot2)](https://anicolella.github.io/jurimetria/) |
-| 09 | [Visualização de dados II (estatística básica e ggplot2)](https://anicolella.github.io/jurimetria/) |
-| 10 | NA |
-| 11 | NA |
-| 12 | NA |
-| 13 | NA |
-| 14 | [Regressão logística]() - [Árvore de decisão](https://docs.google.com/presentation/d/1l21AEyGm8DiqMqoDEgLbRUwkGtQn0syh/edit?slide=id.p1#slide=id.p1) |
-| 15 | [Análise da taxa de vitória e o Teorema de Priest & Klein]() |
-| 16 | [Análise de sobrevivência](https://docs.google.com/presentation/d/1clPmKcDoWazo-mM2VwuvGKRR3bIBTvBA/edit?usp=sharing&ouid=106743576123969683941&rtpof=true&sd=true) |
-| 17 | NA |
-| 18 | NA |
-| 19 | [Estudos de caso I](https://github.com/jjesusfilho/cursoESMP/blob/main/inst/slides/aula_16/relatorio_jurimetria_consignado_em_06_11_2024-1.pdf) |
-| 20 | NA |
+| aula | slide                                                                                                                                                               |
+|:-----|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 01   | [Introdução à jurimetria](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a01.pdf)                                                         |
+| 02   | [Desenho de pesquisa](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/DesenhoPesquisa.zip)                                                 |
+| 03   | [Análise de viabilidade e Listagem de processos](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_3_analise_de_viabilidade)                                 |
+| 04   | [Estruturação de dados I (base R e dplyr)](https://rcfeliz.quarto.pub/cursoesmp-a04/)                                                                               |
+| 05   | [Estruturação de dados II (lubridate e stringr)](https://rcfeliz.quarto.pub/cursoesmp-a05/)                                                                         |
+| 06   | [Estruturação de dados III (iteração com purrr)](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_6_iteracao_com_purrr)                                     |
+| 07   | [Estruturação de dados IV (LLMs e prompt engineering)](https://jjesusfilho.github.io/cursoESMP/inst/slides/aula_7_ia_direito)                                       |
+| 08   | [Visualização de dados I (estatística básica e ggplot2)](https://anicolella.github.io/jurimetria/)                                                                  |
+| 09   | [Visualização de dados II (estatística básica e ggplot2)](https://anicolella.github.io/jurimetria/)                                                                 |
+| 10   | NA                                                                                                                                                                  |
+| 11   | NA                                                                                                                                                                  |
+| 12   | NA                                                                                                                                                                  |
+| 13   | NA                                                                                                                                                                  |
+| 14   | [Regressão logística]() - [Árvore de decisão](https://docs.google.com/presentation/d/1l21AEyGm8DiqMqoDEgLbRUwkGtQn0syh/edit?slide=id.p1#slide=id.p1)                |
+| 15   | [Análise da taxa de vitória e o Teorema de Priest & Klein](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a15.pdf)                        |
+| 16   | [Análise de sobrevivência](https://docs.google.com/presentation/d/1clPmKcDoWazo-mM2VwuvGKRR3bIBTvBA/edit?usp=sharing&ouid=106743576123969683941&rtpof=true&sd=true) |
+| 17   | [Changepoint detection / Quebra Estrutural](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a17.pdf)                                       |
+| 18   | [Resultados](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a18.pdf)                                                                      |
+| 19   | [Estudos de caso I](https://github.com/jjesusfilho/cursoESMP/blob/main/inst/slides/aula_16/relatorio_jurimetria_consignado_em_06_11_2024-1.pdf)                     |
+| 20   | [Estudos de caso II (é o mesmo material da aula 18)](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a20.pdf)                              |
 
 ## Materiais extras
 
-| Título | Link |
-|:---|:---|
-| Link de download do R e RStudio | <https://posit.co/download/rstudio-desktop/> |
-| R for Data Science (R4DS) | <https://r4ds.hadley.nz/> |
-| O tempo do processo judicial | <https://direitoemdados.consudata.com.br/posts/2022-10-06-sobrevivencia/> |
+| Título                                                | Link                                                                                                                                                  |
+|:------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Link de download do R e RStudio                       | <https://posit.co/download/rstudio-desktop/>                                                                                                          |
+| R for Data Science (R4DS)                             | <https://r4ds.hadley.nz/>                                                                                                                             |
+| O tempo do processo judicial                          | <https://direitoemdados.consudata.com.br/posts/2022-10-06-sobrevivencia/>                                                                             |
+| Operacionalização I: Silva, 2018                      | <https://repositorio.enap.gov.br/handle/1/3330>                                                                                                       |
+| Operacionalização II: King; Keohane; Verba, 1994/2021 | <https://press.princeton.edu/books/hardcover/9780691224633/designing-social-inquiry?srsltid=AfmBOoqSqIrtLGlMX74MaAMuCu_0AOdTe6Qx3FG0xmObv3KTW1Q-R0yr> |
+| Operacionalização III: Kellstedt; Whitten, 2015       | <https://www.amazon.com.br/Fundamentos-Pesquisa-em-Ci%C3%AAncia-Pol%C3%ADtica/dp/8521209983>                                                          |
+| PK (original): Priest; Klein, 1984                    | <https://www.rand.org/content/dam/rand/pubs/reports/2006/R3032.pdf>                                                                                   |
+| PK (atual): Lee; Klerman, 2016                        | <https://www.sciencedirect.com/science/article/abs/pii/S0144818816300291>                                                                             |
+| CPT I (intro cálculo offline): Romano, 2024           | <https://www.lancaster.ac.uk/~romano/teaching/2425MATH337/MATH337--Changepoint-Detection.pdf>                                                         |
+| CPT II (intro no R offline): Killicks, 2021a          | <https://www.youtube.com/watch?v=UfGrLJ7S3sc>                                                                                                         |
+| CPT III (avançado no R offline): Killicks, 2021b      | <https://www.youtube.com/watch?v=rRL8rT97S0I>                                                                                                         |
+| CPT IV (review offline): Truong; Oudre; Vayatis, 2020 | <https://arxiv.org/abs/1801.00718>                                                                                                                    |
+| CPT V (original): Page, 1954                          | <https://www.jstor.org/stable/2333009>                                                                                                                |

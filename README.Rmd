@@ -151,10 +151,12 @@ aulas_2024 |>
       aula == "08" ~ glue::glue("[{conteudo}](https://anicolella.github.io/jurimetria/)"),
       aula == "09" ~ glue::glue("[{conteudo}](https://anicolella.github.io/jurimetria/)"),
       aula == "14" ~ glue::glue("[{conteudo}]() - [Árvore de decisão](https://docs.google.com/presentation/d/1l21AEyGm8DiqMqoDEgLbRUwkGtQn0syh/edit?slide=id.p1#slide=id.p1)"),
-      aula == "15" ~ glue::glue("[{conteudo}]()"),
-       aula == "16" ~ glue::glue("[{conteudo}](https://docs.google.com/presentation/d/1clPmKcDoWazo-mM2VwuvGKRR3bIBTvBA/edit?usp=sharing&ouid=106743576123969683941&rtpof=true&sd=true)"),
-      aula == "19" ~ glue::glue("[{conteudo}](https://github.com/jjesusfilho/cursoESMP/blob/main/inst/slides/aula_16/relatorio_jurimetria_consignado_em_06_11_2024-1.pdf)")
-
+      aula == "15" ~ glue::glue("[{conteudo}](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a{aula}.pdf)"),
+      aula == "16" ~ glue::glue("[{conteudo}](https://docs.google.com/presentation/d/1clPmKcDoWazo-mM2VwuvGKRR3bIBTvBA/edit?usp=sharing&ouid=106743576123969683941&rtpof=true&sd=true)"),
+      aula == "17" ~ glue::glue("[{conteudo}](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a{aula}.pdf)"),
+      aula == "18" ~ glue::glue("[{conteudo}](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a{aula}.pdf)"),
+      aula == "19" ~ glue::glue("[{conteudo}](https://github.com/jjesusfilho/cursoESMP/blob/main/inst/slides/aula_16/relatorio_jurimetria_consignado_em_06_11_2024-1.pdf)"),
+      aula == "20" ~ glue::glue("[{conteudo} (é o mesmo material da aula 18)](https://raw.githubusercontent.com/jjesusfilho/cursoESMP/main/inst/slides/a{aula}.pdf)")
     )
   ) |> 
   knitr::kable()
@@ -167,12 +169,32 @@ tibble::tibble(
   `Título` = c(
     "Link de download do R e RStudio",
     "R for Data Science (R4DS)",
-    "O tempo do processo judicial"
+    "O tempo do processo judicial",
+    "Operacionalização I: Silva, 2018",
+    "Operacionalização II: King; Keohane; Verba, 1994/2021",
+    "Operacionalização III: Kellstedt; Whitten, 2015",
+    "PK (original): Priest; Klein, 1984",
+    "PK (atual): Lee; Klerman, 2016",
+    "CPT I (intro cálculo offline): Romano, 2024",
+    "CPT II (intro no R offline): Killicks, 2021a",
+    "CPT III (avançado no R offline): Killicks, 2021b",
+    "CPT IV (review offline): Truong; Oudre; Vayatis, 2020",
+    "CPT V (original): Page, 1954"
   ),
   `Link` = c(
     "https://posit.co/download/rstudio-desktop/",
     "https://r4ds.hadley.nz/",
-    "https://direitoemdados.consudata.com.br/posts/2022-10-06-sobrevivencia/"
+    "https://direitoemdados.consudata.com.br/posts/2022-10-06-sobrevivencia/",
+    "https://repositorio.enap.gov.br/handle/1/3330",
+    "https://press.princeton.edu/books/hardcover/9780691224633/designing-social-inquiry?srsltid=AfmBOoqSqIrtLGlMX74MaAMuCu_0AOdTe6Qx3FG0xmObv3KTW1Q-R0yr",
+    "https://www.amazon.com.br/Fundamentos-Pesquisa-em-Ci%C3%AAncia-Pol%C3%ADtica/dp/8521209983",
+    "https://www.rand.org/content/dam/rand/pubs/reports/2006/R3032.pdf",
+    "https://www.sciencedirect.com/science/article/abs/pii/S0144818816300291",
+    "https://www.lancaster.ac.uk/~romano/teaching/2425MATH337/MATH337--Changepoint-Detection.pdf",
+    "https://www.youtube.com/watch?v=UfGrLJ7S3sc",
+    "https://www.youtube.com/watch?v=rRL8rT97S0I",
+    "https://arxiv.org/abs/1801.00718",
+    "https://www.jstor.org/stable/2333009"
   )
 ) |>
   knitr::kable()
